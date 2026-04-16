@@ -1,0 +1,56 @@
+.header{
+    display: flex;
+    justify-content: end;
+    background-color: greenyellow;
+    gap:30px;
+    padding: 20px;
+}
+
+.conteudo{
+    background-image: url(/assets/background.jpg);
+    background-color: aqua
+}
+.introducao{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  
+}
+.introducao h1{
+      font-weight: 900;
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+}
+.cartoes{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: white
+}
+.glossario{
+    background-color: red;
+}
+
+.cartoes{
+  display: flex;
+}
+.c1{
+
+}
+.descricao{
+    border: 2px solid black;
+    border-radius: 6px; 
+}
+.monstros{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 2px solid red;
+}
+.footer{
+    display: flex;
+    background-color: yellow;
+    justify-content: center;
+}
