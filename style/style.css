@@ -1,14 +1,35 @@
+*{
+    margin: 0;
+}
 .header{
     display: flex;
-    justify-content: end;
-    background-color: greenyellow;
-    gap:30px;
+    justify-content: space-between;
+    gap: 30px;
+    margin-right: 40px;
     padding: 20px;
+    flex-direction: column;
 }
 
+.cadastro{
+    border-radius: 6px;
+    outline: none;
+    background:none;
+    gap: 50px;
+    align-self: center;
+
+
+}
+.login{
+    border-radius: 6px;
+    outline: none;
+    background:none;
+    align-self: self-end;
+}
 .conteudo{
-    background-image: url(/assets/background.jpg);
-    background-color: aqua
+    background-image: url(../assets/background.jpg);
+    background-color: aqua;
+    height: 700px;
+    background-size: cover;
 }
 .introducao{
     display: flex;
@@ -51,6 +72,6 @@
 }
 .footer{
     display: flex;
-    background-color: yellow;
+    background-color: black;
     justify-content: center;
 }
