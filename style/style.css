@@ -4,40 +4,33 @@
 .header{
     display: flex;
     justify-content: space-between;
-   
-    align-items: center;
-    height: 50px;   
-}
-.logo{
-    display: flex;
-    background-image: url(../assets/logo.png);
-    width: 50px;
-    height: 50px;
-    margin-left: 10px;
-}
-.cadastro{
-    border-radius: 6px;
-    outline: none;
-    background:white;
-    text-decoration: solid;
-    font-size: large;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
+    align-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 1000;
+    font-style: oblique;
+    color:black;
+    text-shadow: 2px 2px 8px black;
+    font-size: 30px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 .cadastro:hover{
     background-color:rgb(253, 253, 235);
     cursor: pointer;
     transition: 0.3s;
 }
-.login{
-     border-radius: 6px;
+
+.botao{
+     border-radius: 8px;
     outline: none;
     background:white;
     text-decoration: solid;
-    font-size: large;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: bold;
-    margin-right: 10px;
+    border: 0px;
+    height: 30px;
+    margin: 3px;
+    align-self: center;
 }
 .conteudo{
     display: flex;
@@ -61,6 +54,7 @@
     flex-direction: row;
     align-items: center;
     height: 590px;
+    gap: 20px;
 }
 .introducao h1{
     font-weight: 900;
@@ -84,7 +78,7 @@
 .cartoes{
   display: flex;
   gap: 50px;
-  padding: 100px;
+  padding: 10px;
 
 }
 
@@ -95,7 +89,7 @@
     background-color: black;
     padding: 4px;
     border-radius: 10px;
-    width: 380px;
+    width: 345px;
     height: 500px;
 }
 .footer{
@@ -131,8 +125,8 @@
     
 }
 .aumento:hover{
-    transform: scale(1.4);
-    transition: transform 0.5s ease;
+    transform: scale(1.2);
+    transition: transform 0.5s  ;
 
 }
 .descricaoAbismo{
@@ -145,9 +139,16 @@
     padding: 20px;
     border-radius: 10px;
     color: #fff;
-    margin-right: 10px;
     height: 500px;
     text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    text-align: center;
+}
+.descricaoAbismo h1{
+    font-size: 40px;
+    color: black;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+    font-weight: 1000;
 }
 .caracteristicasAbismo{
     width: 50%;
@@ -163,23 +164,16 @@
     text-align: center;
 }
 .caracteristicasAbismo h1{
-    
-}
-.titulo{
-    display: flex;
-    justify-content: center;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 40px;
+    color: black;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
     font-weight: 1000;
-    font-style: oblique;
-    color:chocolate;
-    text-shadow: 2px 2px 8px black;
-    font-size: 30px;
-    text-align: center;
 }
 .imagemAbismo{
     display: flex;
     width: 100%;
-    height: 80%;
+    height: 70%;
     justify-content: space-between;
     margin-top: 10px;
     background: beige;
