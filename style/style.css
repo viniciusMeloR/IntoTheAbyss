@@ -26,7 +26,6 @@
     inset: 0;
     z-index: -1;
     overflow: hidden;
-     filter: blur(1px);
      background-image: url(../assets/prushka.jpg),url(../assets/prushka2.jpg),url(../assets/prushka3.jpg);
     background-position: left,center,right;
     background-size: 30% 100%,40% 100%,30% 100%;
@@ -110,6 +109,9 @@
     justify-content:space-evenly;
     align-items: center;
     text-align: center;
+    gap: 10px;
+    font-size: small;
+    font-style:normal
 }
 #footer1{
     display: flex;
