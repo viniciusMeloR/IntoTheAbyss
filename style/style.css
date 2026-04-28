@@ -31,6 +31,9 @@
     background-size: 30% 100%,40% 100%,30% 100%;
     background-repeat: no-repeat;
 }
+.cadastro{
+    display: flex;
+}
 .cadastro button:hover{
     background-color:aqua;
     cursor: pointer;
@@ -199,4 +202,47 @@
 .barra{
     border-right: 2px solid white;
     height: 50px;
+}
+dialog  {
+    width: 350px;
+    height: 500px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+     background-image: url(../assets/hello.jpg);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.estiloModal{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    row-gap: 20px;
+    align-items: center;
+    
+}
+.estiloModal input,select{
+    width: 100%;
+    border-radius: 5px;
+    padding: 10px;
+    border-style:double;
+    outline: none;
+    color: black;
+}
+.estiloModal h1{
+     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 1000;
+    font-style: oblique;
+    color:#FFD166;
+    text-shadow: 2px 2px 8px black;
+    font-size:80px;
+    gap:10px;
+    
+}
+.fechamentoModal{
+    gap: 5px;
+    padding: 5px;
 }

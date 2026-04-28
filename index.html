@@ -13,9 +13,39 @@
         <div class="header">
             <h1>Bem-vindo ao Abyss</h1>
             <div class="cadastro">
-            <button onclick="cadastrar()">QUERO SER UM EXPLORADOR</button>
-            <button>Login</button>
+            <button id="abrirModal" onclick="cadastrar()">QUERO SER UM EXPLORADOR</button>
+            <dialog id="modalCadastro">   
+                <div class="estiloModal">
+                    <button class="X" onclick="fecharModal()">X</button>
+                    <h1>Cadastro</h1>
+                    
+                    <input type="text" placeholder="Nome">
+                    <input type="text" placeholder="E-mail">
+                    <select name="" id="">
+                        <option value=""disabled selected>Sexo</option>
+                        <option value="">Masculino</option>
+                        <option value="">Feminino</option>
+                        <option value="">Outro</option></select>
+                    <input type="text" placeholder="Senha">
+                    <input type="text" placeholder="Confirmar Senha">
+                    <button class="fechamentoModal"onclick="fecharModal()">Cadastrar</button>
+                </div>
+                
+            </dialog>
+            <button id="abrirModal" onclick="login()">Login</button>
+            <dialog id="modalLogin">   
+                <div class="estiloModal">
+                    <button class="botaoX" onclick="fecharModalLogin()">X</button>
+                    <h1>Login</h1>
+                    
+                    <input type="text" placeholder="Nome">
+                    <input type="text" placeholder="E-mail">
+                    <input type="text" placeholder="Senha">
+                    <button class="fechamentoModal"onclick="fecharModalLogin()">Login</button>
+                    
+            
             </div>
+        </div>
         </div>
         <hr>
         <div class="introducao">
@@ -85,3 +115,20 @@
 </body>
 
 </html>
+
+<script>
+    let modal = document.querySelector("#modalCadastro")
+    let modalLogin = document.querySelector("#modalLogin")
+    function cadastrar(){
+        modal.showModal()
+    }
+    function fecharModal(){
+        modal.close()
+    }
+     function fecharModalLogin(){
+        modalLogin.close()
+    }
+      function login(){
+        modalLogin.showModal()
+    }
+</script>
