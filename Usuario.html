@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="style/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <div class="headerUsuario">
+    <h1>OLÁ XXX</h1>
+    <div class="botaoUsuario">
+      <a href="">Inicio</a>
+      <a href="">Meu perfil</a>
+    </div>
+  </div>
+  <div class="tela">
+
+    <aside>
+      <div class="Menu">
+        <h1>Menu</h1>
+        <a href="">Personagens Principais</a>
+        <a href="">Apitos</a>
+        <a href="">Camadas</a>
+      </div>
+    </aside>
+    <div class="titulos">
+      <h1>Personagens Principais</h1>
+      <div class="personagens">
+
+        <div class="cartoesPersonagens" id="riko">
+          <div class="descricao">
+          <h1>Riko</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+        <div class="cartoesPersonagens" id="reg">
+          <div class="descricao">
+          <h1>Reg</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+        <div class="cartoesPersonagens" id="nanachi">
+        <div class="descricao">
+          <h1>Nanachi</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+        <div class="cartoesPersonagens" id="liza">
+          <div class="descricao">
+          <h1>Liza</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+        <div class="cartoesPersonagens" id="ozen">
+          <div class="descricao">
+          <h1>Ozen</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+        <div class="cartoesPersonagens" id="bondrewd">
+          <div class="descricao">
+          <h1>Bondrewd</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+        <div class="cartoesPersonagens" id="mitty">
+          <div class="descricao">
+          <h1>Mitty</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+        <div class="cartoesPersonagens" id="faputa">
+          <div class="descricao">
+          <h1>Faputa</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+             nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div class="charts" display: flex; flex-direction: row-reverse;">
+        <div style="flex: 1;"> 
+            <canvas id="myChart"></canvas>
+        </div>
+        <div style="flex:1">
+            <canvas id="myChart2"></canvas>
+        </div> -->
+  </div>
+</body>
+
+</html>
+<script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho'],
+      datasets: [{
+        label: 'Temperatura Média',
+        data: [22, 24, 27, 23, 20, 18],
+        borderWidth: 1,
+        backgroundColor: 'red'
+
+      },
+      {
+        label: 'Umidade Média',
+        data: [90, 89, 93, 87, 88, 82],
+        borderWidth: 1,
+        borderColor: 'blue',
+        backgroundColor: 'blue'
+
+      }
+      ]
+
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            font: {
+              weight: 'number'
+            }
+          }
+        },
+        x: {
+          ticks: {
+            font: {
+              family: 'Helvetica',
+              weight: 'bolder'
+            },
+            color: 'Orange'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 40,
+              weight: 'bold'
+            }
+          }
+        }
+      }
+    },
+
+  });
+  const ctx2 = document.getElementById('myChart2');
+
+  new Chart(ctx2, {
+    type: 'line',
+    data: {
+      labels: ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00'],
+      datasets: [{
+        label: 'Temperatura',
+        data: [30, 29, 28, 25, 22, 23],
+        borderWidth: 3,
+        borderColor: 'black',
+        backgroundColor: 'black'
+
+      },
+      {
+        label: 'Umidade',
+        data: [80, 82, 80, 85, 80, 83],
+        borderWidth: 3,
+        borderColor: 'red',
+        backgroundColor: 'red'
+
+      }
+      ]
+
+    },
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            font: {
+              weight: 'number'
+            }
+          }
+        },
+        x: {
+          ticks: {
+            font: {
+              family: 'Helvetica',
+              weight: 'bolder'
+            },
+            color: 'Orange'
+          }
+        }
+      },
+      plugins: {
+        legend: {
+          labels: {
+            font: {
+              size: 40,
+              weight: 'bold'
+            }
+          }
+        }
+      }
+    },
+
+  });   
+</script>
