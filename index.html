@@ -19,15 +19,15 @@
                     <button class="X" onclick="fecharModal()">X</button>
                     <h1>Cadastro</h1>
                     
-                    <input type="text" placeholder="Nome">
-                    <input type="text" placeholder="E-mail">
+                    <input id= "cadastroNome"type="text" placeholder="Nome">
+                    <input id= "cadastroEmail"type="text" placeholder="E-mail">
                     <select name="" id="">
                         <option value=""disabled selected>Sexo</option>
                         <option value="">Masculino</option>
                         <option value="">Feminino</option>
                         <option value="">Outro</option></select>
-                    <input type="text" placeholder="Senha">
-                    <input type="text" placeholder="Confirmar Senha">
+                    <input id= "cadastroSenha"type="text" placeholder="Senha">
+                    <input id= "cadastroConfirmar"type="text" placeholder="Confirmar Senha">
                     <button class="fechamentoModal"onclick="fecharModal()">Cadastrar</button>
                 </div>
                 
@@ -131,4 +131,6 @@
       function login(){
         modalLogin.showModal()
     }
+
+    let cadastroNome = document.querySelector("#cadastroNome")
 </script>
