@@ -290,6 +290,11 @@ aside{
     font-size: 13px;
     color: white;
 }
+.Menu a:hover{
+    cursor:pointer;
+    transition: 0.5s;
+    filter: brightness(-50%);
+}
 .headerUsuario{
     display: flex;
     align-items: center;
@@ -313,6 +318,15 @@ aside{
     display: flex;
     justify-content: flex-end;
     width: 100%;
+}
+.botaoUsuario a{
+    border-radius: 4px;
+    background-color: beige;
+}
+.botaoUsuario a:hover{
+    background-color:aqua;
+    cursor: pointer;
+    transition: 0.5s;
 }
 .personagens{
     display: flex;
@@ -404,6 +418,19 @@ aside{
     height: 100%;
     width: 100%;
     justify-content: space-between;
+    background-color: #e6edf5;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.dados button{
+    margin-bottom: 6px;
+    border-radius: 4px;
+    background-color: beige;
+}
+.dados button:hover{
+    background-color:aqua;
+    cursor: pointer;
+    transition: 0.5s;
 }
 
 #myChart{
