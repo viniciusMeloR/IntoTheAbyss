@@ -253,16 +253,26 @@ dialog  {
 aside{
     display: flex;
     height: 100vh;
-    width: 300px;
-    background-color: rgba(0, 0, 0, 0.777);
+    width: 200px;
+    background-color: rgba(0, 0, 0, 0.93);
     font-family: sans-serif;
 }
 .tela{
     display: flex;
-    flex-direction: row;
-    background: rgba(245, 245, 220, 0.69);
+    border: 0;
+    margin: 0;
+    padding: 0;
+    
 }
-
+.conteudoUsuario{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: #dce7f3;
+     border: 0;
+    margin: 0;
+    padding: 0;
+}
 .Menu{
     display: flex;
     flex-direction: column;
@@ -277,16 +287,14 @@ aside{
 }
 .Menu a{
     text-decoration: none;
-    font-size: 15px;
+    font-size: 13px;
     color: white;
 }
 .headerUsuario{
-    height: 80px;
-    background-color: black;
     display: flex;
     align-items: center;
-    gap: 20px;
-    border-right: 20px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.912);
 }
 .headerUsuario a{
     margin-right: 20px;
@@ -294,6 +302,11 @@ aside{
     padding: 5px;
     border-radius: 3px;
     text-decoration: none;
+    
+}
+.headerUsuario h1{
+    margin-left: 20px;
+    color: white;
     
 }
 .botaoUsuario{
@@ -314,6 +327,7 @@ aside{
     gap: 10px
 }
 .titulos h1{
+    display: flex;
     font-weight: 900;
     font-family: 'Arial Black', sans-serif;
     letter-spacing: -0.05em;
@@ -321,6 +335,8 @@ aside{
     text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
     align-self: center;
     color: black;
+    border: 10px;
+    margin: 10px;
     
 }
 #riko{
@@ -373,4 +389,26 @@ aside{
     backface-visibility: hidden;
     height: 100%;
     width: 100%;
+}
+
+.meuPerfil{
+    display: flex;
+    width:  100%;
+    height: 85%;
+}
+.dados{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    height: 100%;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#myChart{
+      background-color: #e6edf5;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
