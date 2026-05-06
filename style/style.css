@@ -1,6 +1,6 @@
 *{
     margin: 0;
-     outline: 1px solid red;
+     /* outline: 1px solid red; */
 }
 .header{
     display: flex;
@@ -331,7 +331,7 @@ aside{
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
-    justify-content: space-around;
+    justify-content: space-evenly;
     max-width: 100% 
 }
 
@@ -438,4 +438,8 @@ aside{
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.camadas h1{
+    
 }
