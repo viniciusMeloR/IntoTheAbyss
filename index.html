@@ -13,39 +13,44 @@
         <div class="header">
             <h1>Bem-vindo ao Abyss</h1>
             <div class="cadastro">
-            <button id="abrirModal" onclick="cadastrar()">QUERO SER UM EXPLORADOR</button>
-            <dialog id="modalCadastro">   
-                <div class="estiloModal">
-                    <button class="X" onclick="fecharModal()">X</button>
-                    <h1>Cadastro</h1>
-                    
-                    <input id= "cadastroNome"type="text" placeholder="Nome">
-                    <input id= "cadastroEmail"type="text" placeholder="E-mail">
-                    <select name="" id="">
-                        <option value=""disabled selected>Sexo</option>
-                        <option value="">Masculino</option>
-                        <option value="">Feminino</option>
-                        <option value="">Outro</option></select>
-                    <input id= "cadastroSenha"type="text" placeholder="Senha">
-                    <input id= "cadastroConfirmar"type="text" placeholder="Confirmar Senha">
-                    <button class="fechamentoModal"onclick="fecharModal()">Cadastrar</button>
-                </div>
-                
-            </dialog>
-            <button id="abrirModal" onclick="login() ">Login</button>
-            <dialog id="modalLogin">   
-                <div class="estiloModal">
-                    <button class="botaoX" onclick="fecharModalLogin()">X</button>
-                    <h1>Login</h1>
-                    
-                    <input type="text" placeholder="Nome">
-                    <input type="text" placeholder="E-mail">
-                    <input type="text" placeholder="Senha">
-                    <a class="fechamentoModal" href="Usuario.html">Login</a>
-                    
-            
+                <button id="abrirModal" onclick="cadastrar()">QUERO SER UM EXPLORADOR</button>
+                <dialog id="modalCadastro">
+                    <div class="estiloModal">
+                        <button class="X" onclick="fecharModal()">X</button>
+                        <h1>Cadastro</h1>
+
+                        <input id="cadastroNome" type="text" placeholder="Nome">
+                        <span id="validarNome" class="validacao"></span>
+                        <input id="cadastroEmail" type="text" placeholder="E-mail">
+                        <span id="validarEmail" class="validacao"></span>
+                        <select name="" id="cadastroSexo">
+                            <option value="" disabled selected>Sexo</option>
+                            <option value="">Masculino</option>
+                            <option value="">Feminino</option>
+                            <option value="">Outro</option>
+                        </select>
+                        <input id="cadastroSenha" type="text" placeholder="Senha">
+                        <span id="validarSenha" class="validacao"></span>
+                        <input id="cadastroConfirmar" type="text" placeholder="Confirmar Senha">
+                        <span id="validarConfirmar" class="validacao"></span>
+                        <button onclick="fecharModal()">Cadastrar</button>
+                    </div>
+
+                </dialog>
+                <button id="abrirModal" onclick="login() ">Login</button>
+                <dialog id="modalLogin">
+                    <div class="estiloModal">
+                        <button onclick="fecharModalLogin()">X</button>
+                        <h1>Login</h1>
+
+                        <input type="text" placeholder="Nome">
+                        <input type="text" placeholder="E-mail">
+                        <input type="text" placeholder="Senha">
+                        <a id="Logar" href="Usuario.html">Login</a>
+
+
+                    </div>
             </div>
-        </div>
         </div>
         <hr>
         <div class="introducao">
@@ -119,18 +124,84 @@
 <script>
     let modal = document.querySelector("#modalCadastro")
     let modalLogin = document.querySelector("#modalLogin")
-    function cadastrar(){
+    let cadastroNome = document.querySelector("#cadastroNome")
+    let cadastroEmail = document.querySelector("#cadastroEmail")
+     let cadastroSexo = document.querySelector("#cadastroSexo")
+    let cadastroSenha = document.querySelector("#cadastroSenha")
+     let cadastroConfirmar= document.querySelector("#cadastroConfirmar")
+     let validarNome = document.querySelector ("#validarNome")
+     let caracteresEspeciais = ["!","@","#","$","%","*"]
+     let numeros = ["0","1","2","3","4","5","6","7","8","9"]
+     
+    function cadastrar() {
         modal.showModal()
     }
-    function fecharModal(){
+    function fecharModal() {
         modal.close()
     }
-     function fecharModalLogin(){
+    function fecharModalLogin() {
         modalLogin.close()
     }
-      function login(){
+    function login() {
         modalLogin.showModal()
     }
 
-    let cadastroNome = document.querySelector("#cadastroNome")
+    cadastroNome.addEventListener('input',function(){
+        let valor = cadastroNome.value
+        let temCaracteresEspeciais = caracteresEspeciais.some(function(caracteresEX) {
+                return valor.includes(caracteresEX);
+            });
+
+        let temNumeros = numeros.some(function(numero) {
+                return valor.includes(numero);
+            });
+        
+        if(cadastroNome.value.length<=5||!temCaracteresEspeciais||!temNumeros
+        ||cadastroNome.value.toUpperCase() == cadastroNome.value ||cadastroNome.value.toLowerCase() == cadastroNome.value  ){
+            validarNome.textContent = "O nome precisa ter mais de 5 caracteres, um caractere especial, um caractere maisculo, um caractere minusculo e um número"
+        }else{
+            validarNome.textContent = ""
+        }
+
+    })
+     cadastroEmail.addEventListener('input',function(){
+        let valor = cadastroEmail.value
+        if(!valor.includes("@")){
+            validarEmail.textContent = "O Email precisa ter Arroba"
+        }else{
+            validarEmail.textContent = ""
+        }
+
+    })
+
+     cadastroSenha.addEventListener('input',function(){
+        let valorSenha = cadastroSenha.value
+        let temCaracteresEspeciais = caracteresEspeciais.some(function(caracteresEX) {
+                return valorSenha.includes(caracteresEX);
+            });
+
+        let temNumeros = numeros.some(function(numero) {
+                return valorSenha.includes(numero);
+            });
+        
+        if(cadastroSenha.value.length<=5||!temCaracteresEspeciais||!temNumeros
+        ||cadastroSenha.value.toUpperCase() == cadastroSenha.value ||cadastroSenha.value.toLowerCase() == cadastroSenha.value  ){
+            validarSenha.textContent = "A senha precisa ter mais de 5 caracteres, um caractere especial, um caractere maisculo, um caractere minusculo e um número"
+        }else{
+            validarSenha.textContent = ""
+        }
+
+    })
+
+    cadastroConfirmar.addEventListener('input',function(){
+        let valor = cadastroConfirmar.value
+        if(valor!=cadastroSenha.value){
+            validarConfirmar.textContent = "Senhas diferentes"
+        }else{
+            validarConfirmar.textContent = ""
+        }
+    })
+
+    
+
 </script>

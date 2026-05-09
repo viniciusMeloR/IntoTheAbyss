@@ -8,17 +8,19 @@
     position: relative;
     justify-content: center;
     align-items: center;
+    padding-right: 10px;
+    padding-left: 10px;
+   width: 100%;
+    height: 100vh;
+    z-index: 0;
+}
+.header h1{
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 1000;
     font-style: oblique;
     color:#FFD166;
     text-shadow: 2px 2px 8px black;
     font-size: 30px;
-    padding-right: 10px;
-    padding-left: 10px;
-   width: 100%;
-    height: 100vh;
-    z-index: 0;
 }
 
 .header::before{
@@ -38,7 +40,7 @@
 .cadastro button:hover{
     background-color:aqua;
     cursor: pointer;
-    transition: 0.3s;
+    
 }
 
 .cadastro button{
@@ -52,8 +54,7 @@
     font-weight: bold;
     border: 0px;
     margin: 3px;
-    justify-self: end;
-    align-self: flex-end;
+    transition: 0.3s;
 }
 .conteudo{
     display: flex;
@@ -86,7 +87,7 @@
     overflow-y:hidden;
      background-color: rgb(186, 199, 198);
     background-size: cover;
-    height: 100%;
+    height: auto;
     width: 100%;
      justify-content: space-evenly;
 }
@@ -210,11 +211,9 @@ dialog  {
     height: 500px;
     top: 50%;
     left: 50%;
+    position: fixed;
     transform: translate(-50%, -50%);
-     background-image: url(../assets/hello.jpg);
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: #e6edf5;
 
 }
 .estiloModal{
@@ -222,7 +221,7 @@ dialog  {
     flex-direction: column;
     width: 100%;
     height: 100%;
-    row-gap: 20px;
+    row-gap: 13px;
     align-items: center;
     
 }
@@ -240,15 +239,26 @@ dialog  {
     font-style: oblique;
     color:#FFD166;
     text-shadow: 2px 2px 8px black;
-    font-size:80px;
+    font-size:50px;
     gap:10px;
     
 }
-.fechamentoModal{
-    text-decoration: none;
-    color: #FFD166;
-    text-shadow: none;
-    padding: 5px;
+#Logar{
+     border-radius: 8px;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: 0px;
+    margin: 3px;
+    padding: 3px;
+    transition: 0.3s;
+}
+#Logar:hover{
+     background-color:aqua;
+    cursor: pointer;
 }
 
 aside{
@@ -288,11 +298,12 @@ aside{
     text-decoration: none;
     font-size: 13px;
     color: white;
+    transition: 0.5s;
 }
 .Menu a:hover{
     cursor:pointer;
-    transition: 0.5s;
-    filter: brightness(-50%);
+    
+    filter: brightness(50%);
 }
 .headerUsuario{
     display: flex;
@@ -321,11 +332,12 @@ aside{
 .botaoUsuario a{
     border-radius: 4px;
     background-color: beige;
+     transition: 0.5s;
 }
 .botaoUsuario a:hover{
     background-color:aqua;
     cursor: pointer;
-    transition: 0.5s;
+   
 }
 .personagens{
     display: flex;
@@ -426,11 +438,12 @@ aside{
     margin-bottom: 6px;
     border-radius: 4px;
     background-color: beige;
+    transition: 0.5s;
 }
 .dados button:hover{
     background-color:aqua;
     cursor: pointer;
-    transition: 0.5s;
+    
 }
 
 #myChart{
@@ -440,6 +453,61 @@ aside{
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-.camadas h1{
-    
+.paginaCamadas{
+    display: flex;
+    min-height: 100vh;
+}
+.conteudoCamadas{
+    display: flex;
+}
+.camadas{
+    display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.camadasImagem{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.camadasImagem img{
+    height: auto;
+    max-width: 550px;
+    width: 100%;
+    object-fit: contain;
+   
+}
+#camadasDescricao1{
+    background-color: aqua;
+}
+#camadasDescricao2{
+    background-color: rgba(0, 255, 255, 0.663);
+}
+#camadasDescricao3{
+    background-color: rgba(0, 255, 255, 0.39);
+}
+#camadasDescricao4{
+    background-color: rgba(0, 255, 255, 0.216);
+}
+#camadasDescricao5{
+    background-color: rgba(0, 255, 255, 0.163);
+}
+#camadasDescricao6{
+    background-color: rgba(136, 9, 168, 0.605);
+}
+#camadasDescricao7{
+    background-color: rgb(117, 2, 2);
+}
+.divBordas{
+    margin: 10px;
+    gap: 10px;
+    border: 10px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 10px;
+}
+.validacao{
+    color: red;
 }
