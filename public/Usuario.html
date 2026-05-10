@@ -152,20 +152,42 @@
       </div>
 
       <!-- Conteudo da dash board-->
+       
       <div class="meuPerfil" style="display: flex;" id="telaUsuario">
         <div style="flex: 1;">
+        <h1>Nível de poder</h1>
+
           <canvas id="myChart" height="736"
             style="display: flex; box-sizing:border-box; height: 588.8px; width: 588.8px;" width="736"></canvas>
         </div>
         <div style="flex:1">
-          <div class="dados">
-            <h1>Meus dados</h1>
-            <span id="nomeUsuario"></span>
-            <span id="sexoUsuario"></span>
-            <span id="emailUsuario"></span>
-            <h1>Atualmente você está no poder de : Riko</h1>
-            <h2>Tempo de conta : 1 dia</h2>
-            <button>Atualizar Dados</button>
+          <div class="quiz">
+            <h1>QUIZ TIME!</h1>
+            <h1>Você gosta mais de : </h1>
+            <select name="" id="aventura">
+              <option value="0" disabled selected>LESGO</option>
+              <option value="1">Ficar deboa em casa!</option>
+              <option value="2">Me aventurar em casa!</option>
+              <option value="3">Aventuras fora de casa!</option>
+            </select>
+             <h1>Em uma luta até a morte você usaria um(a): </h1>
+            <select name="" id="arma">
+              <option value="0" disabled selected>MATAR OU MORRER</option>
+              <option value="1">Porrete porquê se eu for morrer vai ser porrando!</option>
+              <option value="2">Arma de fogo pra não ter chance de perder!</option>
+              <option value="3">Espada e shurikens pois a Célia falou que eu sou um(a) ninja</option>
+            </select>
+             <h1>Você se identifica com um(a):</h1>
+            <select name="" id="animal">
+              <option value="0" disabled selected>Somos todos Axolotes</option>
+              <option value="1">Tigre, pois sou rapido e letal</option>
+              <option value="2">Águia, pois sou certeira e mortifera</option>
+              <option value="3">Elefante, pois sou deboa mas se quiser pode vir</option>
+            </select>
+          </div>
+          <button onclick="quiz()">QUIZ</button>
+          <div id="div_quiz">
+
           </div>
         </div>
       </div>

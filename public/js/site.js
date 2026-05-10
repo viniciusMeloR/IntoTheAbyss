@@ -15,6 +15,18 @@ let caracteresEspeciais = ["!", "@", "#", "$", "%", "*"]
 let numeros = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 
+function quiz(){
+ let number = Math.random()
+ let tratado = Math.floor(number*(9-3)+3)
+ if(tratado==3){
+  div_quiz.innerHTML += `aaa`
+ }else if(tratado <=6){
+  div_quiz.innerHTML += `bbb`
+ }else{
+  div_quiz.innerHTML += `ccc`
+ }div_quiz.innerHTML += `${tratado}`
+}
+
 
 function cadastrar() {
   var nomeVar = cadastroNome.value;
