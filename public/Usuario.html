@@ -5,8 +5,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="style/style.css">
+  <link rel="stylesheet" href="../style/style.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="js/site.js" defer></script>
+   <script src="js/chart.js" defer></script>
+   <script src="js/nav.js" defer></script>
+  
 </head>
 
 <body>
@@ -14,9 +18,9 @@
     <aside>
       <div class="Menu">
         <h1>Menu</h1>
-        <a onclick="mudarTela(personagens)">Personagens Principais</a>
-        <a onclick="mudarTela(apitos)">Apitos Brancos</a>
-        <a onclick="mudarTela(camadas)">Camadas</a>
+        <a onclick="mudarTela('personagens')">Personagens Principais</a>
+        <a onclick="mudarTela('apitos')">Apitos Brancos</a>
+        <a onclick="mudarTela('camadas')">Camadas</a>
       </div>
     </aside>
     <div class="conteudoUsuario">
@@ -24,7 +28,7 @@
         <h1>Olá Vinicius</h1>
         <div class="botaoUsuario">
           <a href="./index.html">Inicio</a>
-          <a onclick="mudarTela(telaUsuario)">Meu perfil</a>
+          <a onclick="mudarTela('telaUsuario')">Meu perfil</a>
         </div>
       </div>
       <!--      Conteudo dos flip cards -->
@@ -156,10 +160,9 @@
         <div style="flex:1">
           <div class="dados">
             <h1>Meus dados</h1>
-            <input type="text" placeholder="nome">
-            <input type="text" placeholder="senha">
-            <input type="text" placeholder="sexo">
-            <input type="text" placeholder="email">
+            <span id="nomeUsuario"></span>
+            <span id="sexoUsuario"></span>
+            <span id="emailUsuario"></span>
             <h1>Atualmente você está no poder de : Riko</h1>
             <h2>Tempo de conta : 1 dia</h2>
             <button>Atualizar Dados</button>
@@ -317,90 +320,7 @@
       </div>
     </div>
   </div>
+  
 </body>
 
 </html>
-<script>
-  let telaUsuario = document.getElementById("telaUsuario");
-  let personagens = document.getElementById("personagensPrincipais");
-  let apitos = document.getElementById("telaApitos")
-  let camadas = document.getElementById("camadasAbismo")
-  const ctx = document.getElementById('myChart');
-
-  new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: ['Lyza - a Aniquiladora', 'Bondrewd - O Novato', 'Ozen - A imóvel', 'XXX', 'XXX', 'Riko'],
-      datasets: [{
-        label: 'Nivel de força dos apitos brancos',
-        data: [6, 4, 5, 3, 2, 1],
-        borderWidth: 1,
-        backgroundColor: ['black', 'yellow', 'orange', 'blue', 'green', 'red'],
-        borderWidth: 1
-
-      },
-      ]
-
-    },
-    options: {
-      plugins: {
-        legend: {
-          labels: {
-            font: {
-              size: 15,
-              weight: 'bold'
-            }
-          }
-        }
-      }
-    }
-
-  });
-  function mudarTela(tela) {
-    if (tela == personagens) {
-      personagens.style.display = "flex"
-      telaUsuario.style.display = "none"
-      apitos.style.display = "none"
-      camadas.style.display = "none"
-    } if (tela == telaUsuario) {
-      personagens.style.display = "none"
-      telaUsuario.style.display = "flex"
-      apitos.style.display = "none"
-      camadas.style.display = "none"
-    } if (tela == apitos) {
-      personagens.style.display = "none"
-      telaUsuario.style.display = "none"
-      apitos.style.display = "flex"
-      camadas.style.display = "none"
-    } if (tela == camadas) {
-      personagens.style.display = "none"
-      telaUsuario.style.display = "none"
-      apitos.style.display = "none"
-      camadas.style.display = "flex"
-    }
-  }
-  /*   function mostrarPersonagens(){
-      if(personagens.style.display === "none"){
-        personagens.style.display = "flex";
-        telaUsuario.style.display = "none";
-      }else{
-        personagens.style.display = "none"
-      }
-    }
-  
-    /* function perfil(){
-      if(telaUsuario.style.display === "none"){
-        telaUsuario.style.display = "flex"
-      }else{
-        telaUsuario.style.display = "none"
-      }
-    }
-  
-    function mostrarApitos(){
-      if(apitos.style.display == "none"){
-        apitos.style.display = "flex"
-      }else{
-        apitos.style.display = "none"
-      }
-    } */
-</script>
