@@ -346,3 +346,24 @@
 </body>
 
 </html>
+
+<script>
+  function quiz(){
+    fetch("/quiz/cadastrar", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      quiz1: quiz1Var,
+      quiz2: quiz2Var,
+      quiz3: quiz3Var,
+      quiz4: quiz4Var,
+    }),
+  })
+    .then(function (resposta) {
+      console.log("resposta: ", resposta);
+    })
+  return false;
+  }
+</script>

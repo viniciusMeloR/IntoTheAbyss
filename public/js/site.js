@@ -15,19 +15,6 @@ let caracteresEspeciais = ["!", "@", "#", "$", "%", "*"]
 let numeros = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
 
 
-function quiz(){
- let number = Math.random()
- let tratado = Math.floor(number*(9-3)+3)
- if(tratado==3){
-  div_quiz.innerHTML += `aaa`
- }else if(tratado <=6){
-  div_quiz.innerHTML += `bbb`
- }else{
-  div_quiz.innerHTML += `ccc`
- }div_quiz.innerHTML += `${tratado}`
-}
-
-
 function cadastrar() {
   var nomeVar = cadastroNome.value;
   var emailVar = cadastroEmail.value;
@@ -62,6 +49,7 @@ function cadastrar() {
 
         finalizarAguardar();
       } else {
+        alert("Verifique se os dados estão certos!")
         throw "Houve um erro ao tentar realizar o cadastro!";
       }
     })
@@ -71,9 +59,6 @@ function cadastrar() {
     });
 
   return false;
-}
-function sumirMensagem() {
-  cardErro.style.display = "none";
 }
 
 function entrar() {
@@ -126,7 +111,7 @@ function entrar() {
       });
 
     } else {
-
+      alert("Verifique se os dados estão certos!")
       console.log("Houve um erro ao tentar realizar o login!");
 
       resposta.text().then(texto => {
@@ -140,27 +125,6 @@ function entrar() {
   })
 
   return false;
-}
-
-function sumirMensagem() {
-  cardErro.style.display = "none"
-}
-
-function aguardar() {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "flex";
-}
-
-
-function finalizarAguardar(texto) {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "none";
-
-    var divErrosLogin = document.getElementById("div_erros_login");
-    if (texto) {
-        divErrosLogin.style.display = "flex";
-        divErrosLogin.innerHTML = texto;
-    }
 }
 
 function abrirModal() {
