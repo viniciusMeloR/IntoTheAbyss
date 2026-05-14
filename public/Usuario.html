@@ -164,25 +164,37 @@
           <div class="quiz">
             <h1>QUIZ TIME!</h1>
             <h1>Você gosta mais de : </h1>
-            <select name="" id="aventura">
+            <select name="" id="select_aventura">
               <option value="0" disabled selected>LESGO</option>
               <option value="1">Ficar deboa em casa!</option>
               <option value="2">Me aventurar em casa!</option>
               <option value="3">Aventuras fora de casa!</option>
             </select>
              <h1>Em uma luta até a morte você usaria um(a): </h1>
-            <select name="" id="arma">
+            <select name="" id="select_arma">
               <option value="0" disabled selected>MATAR OU MORRER</option>
               <option value="1">Porrete porquê se eu for morrer vai ser porrando!</option>
               <option value="2">Arma de fogo pra não ter chance de perder!</option>
               <option value="3">Espada e shurikens pois a Célia falou que eu sou um(a) ninja</option>
             </select>
              <h1>Você se identifica com um(a):</h1>
-            <select name="" id="animal">
+            <select name="" id="select_animal">
               <option value="0" disabled selected>Somos todos Axolotes</option>
               <option value="1">Tigre, pois sou rapido e letal</option>
               <option value="2">Águia, pois sou certeira e mortifera</option>
               <option value="3">Elefante, pois sou deboa mas se quiser pode vir</option>
+            </select>
+             <select name="" id="select_pet">
+              <option value="0" disabled selected>Selecione seu pet</option>
+              <option value="1">Slime, pois ela vai comer tudo e guardar no caminho,
+                além de ficar muito grande e útil!
+              </option>
+              <option value="2">Lobogigante, pois vai me ajudar a me locomover, além de morder
+                todos os monstros e ser uma ótima cama
+              </option>
+              <option value="3">ÁguiaMutante, pois vou passar por tudo e todos voando e tirando
+                onde!
+              </option>
             </select>
           </div>
           <button onclick="quiz()">QUIZ</button>
@@ -348,17 +360,27 @@
 </html>
 
 <script>
+    let selectAventura = document.querySelector("#select_aventura")
+    let selectArma = document.querySelector("#select_arma")
+    let selectAnimal = document.querySelector("#select_animal")
+    let selectPet = document.querySelector("#select_pet")
   function quiz(){
+    let quiz1Aventura = selectAventura.value
+    let quiz2Arma = selectArma.value
+    let quiz3Animal = selectAnimal.value
+    let quiz4Pet = selectPet.value
+    let idUsuarioArmazem = sessionStorage.ID_USUARIO
     fetch("/quiz/cadastrar", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      quiz1: quiz1Var,
-      quiz2: quiz2Var,
-      quiz3: quiz3Var,
-      quiz4: quiz4Var,
+      quiz1: quiz1Aventura,
+      quiz2: quiz2Arma,
+      quiz3: quiz3Animal,
+      quiz4: quiz4Pet,
+      idUsuario : idUsuarioArmazem
     }),
   })
     .then(function (resposta) {

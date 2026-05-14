@@ -10,7 +10,7 @@ function autenticar(req, res) {
         res.status(400).send("Sua senha está indefinida!");
     } else {
 
-        usuarioModel.autenticar(nome, senha)
+        usuarioModel.autenticar(usuario, senha)
             .then(
                 function (resultadoAutenticar) {
                     console.log(`\nResultados encontrados: ${resultadoAutenticar.length}`);
@@ -22,6 +22,9 @@ function autenticar(req, res) {
                             id: resultadoAutenticar[0].idUsuario,
                             usuario:resultadoAutenticar[0].usuario,
                             senha: resultadoAutenticar[0].senha,
+                            email: resultadoAutenticar[0].email,
+                            sexo: resultadoAutenticar[0].sexo,
+                            tempo: resultadoAutenticar[0].tempo
                         });
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
@@ -39,36 +42,37 @@ function autenticar(req, res) {
     }
 
 }
+function validarSenhaOuUsuario(texto) {
+    let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*]).{6,}$/;
 
+    return regex.test(texto);
+}
 function cadastrar(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var usuario = req.body.nomeServer;
+    var nome = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var sexo = req.body.sexoServer;
     var tempo = req.body.tempoServer;
 
-    // Faça as validações dos valores
-     if (nome == undefined || nome.length < 6|| !nome.includes("!") ||!nome.includes("@")
-    ||!nome.includes("#")||!nome.includes("$")||!nome.includes("%")||!nome.includes("*")
-||!nome.includes(0)||!nome.includes(1)||!nome.includes(2)||!nome.includes(3)
-||!nome.includes(4)||!nome.includes(5) ||!nome.includes(6)||!nome.includes(7)
-||!nome.includes(8)||!nome.includes(9)|| nome.toUpperCase()==nome || nome.toLowerCase()==nome)  {
-        res.status(400).send("Seu Usuario está undefined!");
+    if (nome == undefined || !validarSenhaOuUsuario(nome)) {
+        res.status(400).send(
+            "Usuário inválido! Precisa ter no mínimo 6 caracteres, letra maiúscula, minúscula, número e caractere especial."
+        );
     } else if (email == undefined || !email.includes("@")) {
-        res.status(400).send("Seu email está undefined! Ou falta o @");
-    } else  if (senha == undefined || senha.length < 6|| !senha.includes("!") ||!senha.includes("@")
-    ||!senha.includes("#")||!senha.includes("$")||!senha.includes("%")||!senha.includes("*")
-||!senha.includes(0)||!senha.includes(1)||!senha.includes(2)||!senha.includes(3)
-||!senha.includes(4)||!senha.includes(5) ||!senha.includes(6)||!senha.includes(7)
-||!senha.includes(8)||!senha.includes(9)|| senha.toUpperCase()==senha || senha.toLowerCase()==senha)  {
-        res.status(400).send("Sua senha está undefined!");
+        res.status(400).send("Email inválido!");
+
+    } else if (senha == undefined || !validarSenhaOuUsuario(senha)) {
+        res.status(400).send(
+            "Senha inválida! Precisa ter no mínimo 6 caracteres, letra maiúscula, minúscula, número e caractere especial."
+        );
+
     } else if (sexo == undefined) {
-        res.status(400).send("Seu sexo esta undefined");
+        res.status(400).send("Sexo undefined!");
+
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(usuario, email, senha, sexo, tempo)
+        usuarioModel.cadastrar(nome, email, senha, sexo, tempo)
             .then(
                 function (resultado) {
                     res.json(resultado);

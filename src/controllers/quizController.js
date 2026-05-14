@@ -1,4 +1,4 @@
-var usuarioModel = require("../models/quizModel");
+var quizmodel = require("../models/quizmodel");
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -6,6 +6,7 @@ function cadastrar(req, res) {
     var quiz2 = req.body.quiz2;
     var quiz3 = req.body.quiz3;
     var quiz4 = req.body.quiz4;
+    var idUsuario = req.body.idUsuario
 
     // Faça as validações dos valores
      if (quiz1 == undefined)  {
@@ -19,7 +20,7 @@ function cadastrar(req, res) {
     } else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(quiz1,quiz2,quiz3,quiz4)
+        quizmodel.cadastrar(quiz1, quiz2, quiz3, quiz4, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);

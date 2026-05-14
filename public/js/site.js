@@ -46,8 +46,6 @@ function cadastrar() {
         setTimeout(() => {
           window.location = "index.html";
         }, "2000");
-
-        finalizarAguardar();
       } else {
         alert("Verifique se os dados estão certos!")
         throw "Houve um erro ao tentar realizar o cadastro!";
@@ -55,7 +53,6 @@ function cadastrar() {
     })
     .catch(function (resposta) {
       console.log(`#ERRO: ${resposta}`);
-      finalizarAguardar();
     });
 
   return false;
@@ -140,7 +137,7 @@ function login() {
   modalLogin.showModal()
 }
 
-if(cadastroNome)cadastroNome.addEventListener('input', function () {
+cadastroNome.addEventListener('input', function () {
   let valor = cadastroNome.value
   let temCaracteresEspeciais = caracteresEspeciais.some(function (caracteresEX) {
     return valor.includes(caracteresEX);
