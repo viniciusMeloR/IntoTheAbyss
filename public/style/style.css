@@ -461,6 +461,8 @@ aside{
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  height: 100%;
+  width: 100%;
 }
 
 .paginaCamadas{
@@ -558,7 +560,7 @@ aside{
   height: 50px;
   width: 50px;
 }
-.div_quiz{
+.div_quizImg{
     display: flex;
     height: 300px;
     width: 300px;
@@ -572,6 +574,8 @@ aside{
     color:white; 
     align-items: center;
     flex-direction: column;
+    justify-content: center;
+    gap: 15px;
 }
 .Quizz button{
     display: flex;
@@ -590,5 +594,64 @@ aside{
 .Quizz button:hover{
     background-color:aqua;
     cursor: pointer;
+    
+}
+
+#dadosUsuario{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+     border-radius: 5px;
+}
+#quizImg{
+     width:450x;
+  height: 450px;
+    padding: 10px;
+
+}
+#dashboard{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+   width: 650px;
+  height: 650px;
+    flex: 1;
+    gap: 10px;
+}
+#dadosUsuarioDireita{
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 5px;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e6edf5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+     width: 650px;
+     height: 650px;
+
+}
+
+#chart{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.kpi{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+.tables{
+    background-color: #e6edf5;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    text-align: center;
+     align-items: center;
+    justify-content: center;
     
 }

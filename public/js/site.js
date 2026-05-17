@@ -106,7 +106,7 @@ function entrar() {
       });
 
     } else {
-      alert("Verifique se os dados estão certos!")
+      alert("Verifique se os dados contem os requistos!, se conter, usuario de login já existe!")
       console.log("Houve um erro ao tentar realizar o login!");
 
       resposta.text().then(texto => {

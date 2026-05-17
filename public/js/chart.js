@@ -1,5 +1,4 @@
 const ctx = document.getElementById('myChart');
-
 new Chart(ctx, {
   type: 'doughnut',
   data: {

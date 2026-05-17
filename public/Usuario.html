@@ -155,54 +155,76 @@
       <!-- Conteudo da dash board-->
 
       <div class="meuPerfil" style="display: flex;" id="telaUsuario">
-        <div style="flex: 1;">
+        <div style="flex:1" class="Quizz" id="div_quiz">
+          <h1>QUIZ TIME! PENSE COM CARINHO SÓ PODERA SER FEITO UMA VEZ</h1>
+          <h1>Você gosta mais de : </h1>
+          <select name="" id="select_aventura">
+            <option value="0" disabled selected>LESGO</option>
+            <option value="1">Ficar deboa em casa!</option>
+            <option value="2">Me aventurar em casa!</option>
+            <option value="3">Aventuras fora de casa!</option>
+          </select>
+          <h1>Em uma luta até a morte você usaria um(a): </h1>
+          <select name="" id="select_arma">
+            <option value="0" disabled selected>MATAR OU MORRER</option>
+            <option value="1">Porrete porquê se eu for morrer vai ser porrando!</option>
+            <option value="2">Arma de fogo pra não ter chance de perder(se ninguém chegar perto)!</option>
+            <option value="3">Espada e shurikens pois a Célia falou que eu sou um(a) ninja</option>
+          </select>
+          <h1>Você se identifica com um(a):</h1>
+          <select name="" id="select_animal">
+            <option value="0" disabled selected>Somos todos Axolotes</option>
+            <option value="1">Tigre, pois sou rapido e letal</option>
+            <option value="2">Águia, pois sou certeira e mortifera</option>
+            <option value="3">Elefante, pois sou deboa mas se quiser pode vir</option>
+          </select>
+          <h1>Seu pet será um(a):</h1>
+          <select name="" id="select_pet">
+            <option value="0" disabled selected>Selecione seu pet</option>
+            <option value="1">Slime, pois ela vai comer tudo e guardar dentro dela durante minha jornada,
+              além de ficar muito grande e útil!
+            </option>
+            <option value="2">Lobogigante, pois vai me ajudar a me locomover, além de morder
+              todos os monstros e servir como uma cama fofinha!
+            </option>
+            <option value="3">ÁguiaMutante, pois vou passar por tudo e todos voando e tirando
+              onda!
+            </option>
+          </select>
+          <button onclick="quiz();">QUIZ</button>
 
-          <canvas id="myChart" height="736"
-            style="display: flex; box-sizing:border-box; height: 588.8px; width: 588.8px;" width="736"></canvas>
         </div>
-        <div style="flex:1" class="Quizz">
-            <h1>QUIZ TIME!</h1>
-            <h1>Você gosta mais de : </h1>
-            <select name="" id="select_aventura">
-              <option value="0" disabled selected>LESGO</option>
-              <option value="1">Ficar deboa em casa!</option>
-              <option value="2">Me aventurar em casa!</option>
-              <option value="3">Aventuras fora de casa!</option>
-            </select>
-            <h1>Em uma luta até a morte você usaria um(a): </h1>
-            <select name="" id="select_arma">
-              <option value="0" disabled selected>MATAR OU MORRER</option>
-              <option value="1">Porrete porquê se eu for morrer vai ser porrando!</option>
-              <option value="2">Arma de fogo pra não ter chance de perder(se ninguém chegar perto)!</option>
-              <option value="3">Espada e shurikens pois a Célia falou que eu sou um(a) ninja</option>
-            </select>
-            <h1>Você se identifica com um(a):</h1>
-            <select name="" id="select_animal">
-              <option value="0" disabled selected>Somos todos Axolotes</option>
-              <option value="1">Tigre, pois sou rapido e letal</option>
-              <option value="2">Águia, pois sou certeira e mortifera</option>
-              <option value="3">Elefante, pois sou deboa mas se quiser pode vir</option>
-            </select>
-            <h1>Seu pet será um(a):</h1>
-            <select name="" id="select_pet">
-              <option value="0" disabled selected>Selecione seu pet</option>
-              <option value="1">Slime, pois ela vai comer tudo e guardar dentro dela durante minha jornada,
-                além de ficar muito grande e útil!
-              </option>
-              <option value="2">Lobogigante, pois vai me ajudar a me locomover, além de morder
-                todos os monstros e ser uma ótima cama
-              </option>
-              <option value="3">ÁguiaMutante, pois vou passar por tudo e todos voando e tirando
-                onda!
-              </option>
-            </select>
-          <button onclick="quiz(); personagem();">QUIZ</button>
-          <div class="div_quiz">
-           <img id="quizImg" src="" alt="">
+        <div id="dadosUsuario" style="display: none;">
+          <div id="dashboard">
+            <div class="kpi">
+              <table class="tables">
+                <tr>
+                  <th>Autor de made in abyss</th>
+                </tr>
+                <tr>
+                  <td>Akihito Tsukushi</td>
+                </tr>
+              </table>
+              <table class="tables">
+                <tr>
+                  <th>Data pra o novo filme de Made in abyss</th>
+                </tr>
+                <tr>
+                  <td>23 de outubro de 2026.</td>
+                </tr>
+              </table>
+            </div>
+            <div id="chart"><canvas id="myChart"></canvas></div>
+
+          </div>
+          <div id="dadosUsuarioDireita">
+            <h1 id="nome2"></h1>
+            <h1 id="tempo">Tempo de conta</h1>
+            <img id="quizImg" src="" alt="">
           </div>
         </div>
       </div>
-      
+
       <div class="apitos titulos" id="telaApitos" style="display: none;">
         <h1>Apitos Brancos</h1>
         <div class="personagens">
@@ -372,14 +394,35 @@
   } else {
     nome.innerHTML = `Deu ruim no storage`
   }
+  let nome2 = document.getElementById("nome2")
+  if (nomeStorage) {
+    nome2.innerHTML = `${nomeStorage}`
+  } else {
+    nome2.innerHTML = `Deu ruim no storage`
+  }
+
+  let tempoStorage = sessionStorage.getItem("TEMPO_USUARIO")
+  let tempo = document.getElementById("tempo")
+  if (tempo) {
+    let diferencaMiliSeg = Date.now() - new Date(tempoStorage) // Quando usa Date.now ele traz em milisegundos, então a operação de menos converte o tempo no storage em milisegundos
+    let dias = Math.floor(diferencaMiliSeg / (1000 * 60 * 60 * 24)) // Formula para trasformar mili segundos em dias, 1000 equivale a um segundo
+    let horas = Math.floor((diferencaMiliSeg / (1000 * 60 * 60)) % 24)
+    let minutos = Math.floor((diferencaMiliSeg / (1000 * 60)) % 60)
+    tempo.innerHTML = `Tempo de criação da conta <br> Dias:${dias}<br>Horas:${horas}<br>Minutos:${minutos}`
+  } else {
+    tempo.innerHTML = `Deu boqueta`
+  }
+
+  let divQuiz = document.getElementById("div_quiz")
   let sexoStorage = sessionStorage.getItem("SEXO_USUARIO")
   let selectAventura = document.querySelector("#select_aventura")
   let selectArma = document.querySelector("#select_arma")
   let selectAnimal = document.querySelector("#select_animal")
   let selectPet = document.querySelector("#select_pet")
-   let quizImg = document.getElementById("quizImg")
+  let quizImg = document.getElementById("quizImg")
+  let dadosUsuario = document.getElementById("dadosUsuario")
   function quiz() {
-   
+
     let quiz1Aventura = selectAventura.value
     let quiz2Arma = selectArma.value
     let quiz3Animal = selectAnimal.value
@@ -401,18 +444,63 @@
       .then(function (resposta) {
         console.log("resposta: ", resposta);
 
-        personagem(quiz1Aventura,quiz2Arma,quiz3Animal,quiz4Pet)
+        personagem(quiz1Aventura, quiz2Arma, quiz3Animal, quiz4Pet)
       })
     return false;
 
-  
+
 
   }
-    function personagem(quiz1Aventura,quiz2Arma,quiz3Animal,quiz4Pet) {
-      if(sexoStorage == "Masculino"){
-      if (quiz1Aventura == "1" && quiz2Arma == "1" && quiz3Animal == "1" && quiz4Pet == "1"){
-        quizImg.src = "../assets/quizz1.png"
+  function personagem(quiz1Aventura, quiz2Arma, quiz3Animal, quiz4Pet) {
+
+    /* let lista = [quiz1Aventura, quiz2Arma, quiz3Animal, quiz4Pet]
+    let listaEmString = lista.join(",")
+    let json = {}
+    let json2 = {}
+    let contador = 1
+    let contador2 = 82
+    for (let a = 1; a <= 3; a++) {
+      for (let b = 1; b <= 3; b++) {
+        for (let c = 1; c <= 3; c++) {
+          for (let d = 1; d <= 3; d++) {
+            let chave = `${a},${b},${c},${d}`
+            json[chave] = `./assets/quizz/quizz${contador}.jpg`
+            json2[chave] = `./assets/quizz/quizz${contador2}.jpg`
+            contador++
+            contador2++
+          }
+        }
       }
+    } */
+    if (sexoStorage == "Masculino" && quiz1Aventura == 1) {
+      quizImg.src = "../assets/quizz/quizz1.jpg"
+    } else if (quiz1Aventura == 2) {
+      quizImg.src = "../assets/quizz/quizz2.jpg"
+    } else if (quiz1Aventura == 3) {
+      quizImg.src = "../assets/quizz/quizz3.jpg"
     }
+    if (sexoStorage == "Feminino" && quiz1Aventura == 1) {
+      quizImg.src = "../assets/quizz/quizz6.jpg"
+    } else if (quiz1Aventura == 2) {
+      quizImg.src = "../assets/quizz/quizz7.jpg"
+    } else if (quiz1Aventura == 3) {
+      quizImg.src = "../assets/quizz/quizz8.jpg"
     }
+    if (sexoStorage == "Outro" && quiz1Aventura == 1) {
+      quizImg.src = "../assets/quizz/quizz9.jpg"
+    } else if (quiz1Aventura == 2) {
+      quizImg.src = "../assets/quizz/quizz10.jpg"
+    } else if (quiz1Aventura == 3) {
+      quizImg.src = "../assets/quizz/quizz7.jpg"
+    }
+
+    divQuiz.style.display = "none"
+    dadosUsuario.style.display = "flex"
+    /* if (sexoStorage == "Masculino") {
+      quizImg.src = json[listaEmString]
+    } else {
+      quizImg.src = json2[listaEmString]
+    } */
+
+  }
 </script>
