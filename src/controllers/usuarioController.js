@@ -27,7 +27,7 @@ function autenticar(req, res) {
                             tempo: resultadoAutenticar[0].tempo
                         });
                     } else if (resultadoAutenticar.length == 0) {
-                        res.status(403).send("Email e/ou senha inválido(s)");
+                        res.status(403).send("Usuario e/ou senha inválido(s)");
                     } else {
                         res.status(403).send("Mais de um usuário com o mesmo login e senha!");
                     }
@@ -48,13 +48,13 @@ function validarSenhaOuUsuario(texto) {
     return regex.test(texto);
 }
 function cadastrar(req, res) {
-    var nome = req.body.nomeServer;
+    var usuario = req.body.nomeServer;
     var email = req.body.emailServer;
     var senha = req.body.senhaServer;
     var sexo = req.body.sexoServer;
     var tempo = req.body.tempoServer;
 
-    if (nome == undefined || !validarSenhaOuUsuario(nome)) {
+    if (usuario == undefined || !validarSenhaOuUsuario(usuario)) {
         res.status(400).send(
             "Usuário inválido! Precisa ter no mínimo 6 caracteres, letra maiúscula, minúscula, número e caractere especial."
         );
@@ -68,26 +68,34 @@ function cadastrar(req, res) {
 
     } else if (sexo == undefined) {
         res.status(400).send("Sexo undefined!");
-
-    } else {
-
-        // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        usuarioModel.cadastrar(nome, email, senha, sexo, tempo)
-            .then(
-                function (resultado) {
-                    res.json(resultado);
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+        
     }
+    
+    else {
+         usuarioModel.buscarPorUsuario(usuario)
+        .then(resultado => {
+
+            if (resultado.length > 0) {
+                res.status(409).send("Usuário já existe!");
+                return;
+            }
+
+            // se não existe, cadastra
+            usuarioModel.cadastrar(usuario, email, senha, sexo, tempo)
+                .then(resultado => {
+                    res.json(resultado);
+                })
+                .catch(erro => {
+                    console.log(erro);
+                    res.status(500).json(erro.sqlMessage);
+                });
+
+        })
+        .catch(erro => {
+            console.log(erro);
+            res.status(500).json(erro.sqlMessage);
+        });
+}
 }
 
 module.exports = {

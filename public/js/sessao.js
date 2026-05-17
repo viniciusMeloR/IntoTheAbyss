@@ -18,13 +18,16 @@ function limparSessao() {
 }
 
 // carregamento (loading)
-function aguardar() {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "flex";
+function aguardarCadastro() {
+    document.getElementById("div_aguardar_cadastro").style.display = "flex";
 }
 
-function finalizarAguardar(texto) {
-    var divAguardar = document.getElementById("div_aguardar");
+function aguardarLogin() {
+    document.getElementById("div_aguardar_login").style.display = "flex";
+}
+
+function finalizarAguardarLogin(texto) {
+    var divAguardar = document.getElementById("div_aguardar_login");
     divAguardar.style.display = "none";
 
     var divErrosLogin = document.getElementById("div_erros_login");
@@ -33,4 +36,19 @@ function finalizarAguardar(texto) {
         divErrosLogin.innerHTML = texto;
     }
 }
+
+function finalizarAguardarCadastro(texto) {
+    var divAguardar = document.getElementById("div_aguardar_cadastro");
+    divAguardar.style.display = "none";
+
+    var divErrosCadastro = document.getElementById("div_erros_cadastro");
+    if (texto) {
+        divErrosCadastro.style.display = "flex";
+        divErrosCadastro.innerHTML = texto;
+    }
+}
+window.onload = () => {
+  document.getElementById("div_aguardar_cadastro").style.display = "none";
+  document.getElementById("div_aguardar_login").style.display = "none";
+};
 

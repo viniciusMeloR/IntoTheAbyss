@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="./style/style.css">
     <script src="js/site.js" defer></script>
+    <script src="js/sessao.js" defer></script>
 
 </head>
 
@@ -36,12 +37,15 @@
                         <input id="cadastroConfirmar" type="text" placeholder="Confirmar Senha">
                         <span id="validarConfirmar" class="validacao"></span>
                         <button onclick="cadastrar()">Cadastrar</button>
-                        <div id="div_aguardar" class="loading-div">
-                            <img src="./assets/circle-loading.gif" id="loading-gif" />
-                        </div>
+
                     </div>
 
                 </dialog>
+                <div id="div_aguardar_cadastro" class="loading-div">
+                    <img src="../assets/circle-loading.gif" id="loading-gif" />
+                </div>
+                <div id="div_erros_login"></div>
+
                 <button id="abrirModalLogin" onclick="login() ">Login</button>
                 <dialog id="modalLogin">
                     <div class="estiloModal">
@@ -50,11 +54,19 @@
 
                         <input id="loginNome" type="text" placeholder="Nome">
                         <input id="loginSenha" type="text" placeholder="Senha">
-                        <a id="Logar" onclick="entrar()" href="Usuario.html">Login</a>
-
+                        <a id="Logar" onclick="entrar()">Login</a>
 
                     </div>
                 </dialog>
+                <div id="div_aguardar_login" class="loading-div">
+                    <img src="../assets/circle-loading.gif" id="loading-gif">
+                </div>
+                <div class="alerta_erro">
+                    <div class="card_erro" id="cardErro">
+                        <span id="mensagem_erro"></span>
+                    </div>
+                </div>
+                <div id="div_erros_login"></div>
             </div>
         </div>
         <hr>
@@ -69,15 +81,18 @@
                 que torna o retorno à superfície extremamente difícil.<br><br>
 
                 <h1>PONTOS PRINCIPAIS SOBRE O ABISMO</h1><br>
-                <b>Estrutura em Camadas:</b> O Abismo é dividido em várias camadas, cada uma mais profunda, perigosa e
+                <b>Estrutura em Camadas:</b> O Abismo é dividido em várias camadas, cada uma mais profunda, perigosa
+                e
                 surreal que a anterior. Acredita-se que tenha mais de 20.000 metros de profundidade.<br><br>
                 <b>Atração Fatal:</b> O Abismo é descrito como um ser que "inspira" aventureiros, um lugar de beleza
-                estonteante, mas de perigo absoluto, agindo como um "inferno em espiral" que atrai exploradores para o
+                estonteante, mas de perigo absoluto, agindo como um "inferno em espiral" que atrai exploradores para
+                o
                 fundo<br><br>
                 <b>A "Maldição" da Ascensão:</b> Quanto mais fundo um explorador desce, mais severos são os efeitos
                 físicos e mentais ao tentar subir (vertigem, dores, hemorragia e, nas profundezas, perda da
                 humanidade).<br><br>
-                <b>Caçadores de Relíquias:</b> A cidade de Orth foi construída na borda do abismo por pessoas atraídas
+                <b>Caçadores de Relíquias:</b> A cidade de Orth foi construída na borda do abismo por pessoas
+                atraídas
                 pelas relíquias valiosas escondidas lá dentro. Exploradores, conhecidos como "Delvers", são
                 classificados
                 por "apitos" (cores) que determinam a profundidade máxima permitida para exploração.<br><br></li>
@@ -88,40 +103,120 @@
 
         </div>
 
-    </div>
-    <div class="glossario">
-        <div class="cartoes">
-            <div class="monstros m1">
-                <div class="imagemM1 aumento">
+
+        <div class="glossario">
+            <div class="cartoes">
+                <div class="monstros m1">
+                    <div class="imagemM1 aumento">
+                    </div>
+                </div>
+                <div class="monstros c2">
+                    <div class="imagemM2 aumento"></div>
+                </div>
+                <div class="monstros c3">
+                    <div class="imagemM3 aumento"></div>
                 </div>
             </div>
-            <div class="monstros c2">
-                <div class="imagemM2 aumento"></div>
-            </div>
-            <div class="monstros c3">
-                <div class="imagemM3 aumento"></div>
-            </div>
         </div>
-    </div>
-    <Hr>
-    <footer>
-        <div class="footer">
-            <div id="footer1">Made by : Vinicius De Melo Rodrigues SPTECHER<BR>
-                Quem somos<BR>
-                Contato<BR>
-                XXX-XXX-XXX
+        <Hr>
+        <footer>
+            <div class="footer">
+                <div id="footer1">Made by : Vinicius De Melo Rodrigues SPTECHER<BR>
+                    Quem somos<BR>
+                    Contato<BR>
+                    XXX-XXX-XXX
+                </div>
+                <div class="barra"></div>
+                <div>Parceiros<br>
+                    SPTECH <br>
+                    C6BANK </div>
+                <div class="barra"></div>
+                <div>Se você não despertar interesse por Made in Abyss depois de ver o site eu falhei <br>
+                    Veja o anime, só assista os filmes depois que acabar o anime<br>
+                    O filme da primeira temporada do anime corta muita coisa</div>
             </div>
-            <div class="barra"></div>
-            <div>Parceiros<br>
-                SPTECH <br>
-                C6BANK </div>
-            <div class="barra"></div>
-            <div>Se você não despertar interesse por Made in Abyss depois de ver o site eu falhei <br>
-                Veja o anime, só assista os filmes depois que acabar o anime<br>
-                O filme da primeira temporada do anime corta muita coisa</div>
-        </div>
-    </footer>
+        </footer>
 
 </body>
 
 </html>
+
+<script>
+let modal = document.querySelector("#modalCadastro")
+let modalLogin = document.querySelector("#modalLogin")
+let validarNome = document.querySelector("#validarNome")
+let validarEmail = document.querySelector("#validarEmail")
+let validarSenha = document.querySelector("#validarSenha")
+let validarConfirmar = document.querySelector("#validarConfirmar")
+let caracteresEspeciais = ["!", "@", "#", "$", "%", "*"]
+let numeros = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+    function abrirModal() {
+  modal.showModal()
+}
+function fecharModal() {
+  modal.close()
+}
+function fecharModalLogin() {
+  modalLogin.close()
+}
+function login() {
+  modalLogin.showModal()
+}
+
+cadastroNome.addEventListener('input', function () {
+  let valor = cadastroNome.value
+  let temCaracteresEspeciais = caracteresEspeciais.some(function (caracteresEX) {
+    return valor.includes(caracteresEX);
+  });
+
+  let temNumeros = numeros.some(function (numero) {
+    return valor.includes(numero);
+  });
+
+  if (cadastroNome.value.length <= 5 || !temCaracteresEspeciais || !temNumeros
+    || cadastroNome.value.toUpperCase() == cadastroNome.value || cadastroNome.value.toLowerCase() == cadastroNome.value) {
+    validarNome.textContent = "O nome precisa ter mais de 5 caracteres, um caractere especial, um caractere maisculo, um caractere minusculo e um número"
+  } else {
+    validarNome.textContent = ""
+  }
+
+})
+cadastroEmail.addEventListener('input', function () {
+  let valor = cadastroEmail.value
+  if (!valor.includes("@")) {
+    validarEmail.textContent = "O Email precisa ter Arroba"
+  } else {
+    validarEmail.textContent = ""
+  }
+
+})
+
+cadastroSenha.addEventListener('input', function () {
+  let valorSenha = cadastroSenha.value
+  let temCaracteresEspeciais = caracteresEspeciais.some(function (caracteresEX) {
+    return valorSenha.includes(caracteresEX);
+  });
+
+  let temNumeros = numeros.some(function (numero) {
+    return valorSenha.includes(numero);
+  });
+
+  if (cadastroSenha.value.length <= 5 || !temCaracteresEspeciais || !temNumeros
+    || cadastroSenha.value.toUpperCase() == cadastroSenha.value || cadastroSenha.value.toLowerCase() == cadastroSenha.value) {
+    validarSenha.textContent = "A senha precisa ter mais de 5 caracteres, um caractere especial, um caractere maisculo, um caractere minusculo e um número"
+  } else {
+    validarSenha.textContent = ""
+  }
+
+})
+
+cadastroConfirmar.addEventListener('input', function () {
+  let valor = cadastroConfirmar.value
+  if (valor != cadastroSenha.value) {
+    validarConfirmar.textContent = "Senhas diferentes"
+  } else {
+    validarConfirmar.textContent = ""
+  }
+})
+</script>

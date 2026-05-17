@@ -17,6 +17,13 @@ new Chart(ctx, {
   },
   options: {
     plugins: {
+       title: {
+                display: true,
+                text: 'Nivel de força dos apitos brancos', // Texto do título
+                font: {
+                    size: 30 // Tamanho da fonte
+                }
+              },
       legend: {
         labels: {
           font: {

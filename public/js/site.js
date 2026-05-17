@@ -1,22 +1,17 @@
-let modal = document.querySelector("#modalCadastro")
-let modalLogin = document.querySelector("#modalLogin")
+
 let cadastroNome = document.querySelector("#cadastroNome")
 let cadastroEmail = document.querySelector("#cadastroEmail")
 let cadastroSexo = document.querySelector("#cadastroSexo")
 let cadastroSenha = document.querySelector("#cadastroSenha")
 let cadastroConfirmar = document.querySelector("#cadastroConfirmar")
-let validarNome = document.querySelector("#validarNome")
-let validarEmail = document.querySelector("#validarEmail")
-let validarSenha = document.querySelector("#validarSenha")
-let validarConfirmar = document.querySelector("#validarConfirmar")
 let loginNome = document.querySelector("#loginNome")
 let loginSenha = document.querySelector("#loginSenha")
-let caracteresEspeciais = ["!", "@", "#", "$", "%", "*"]
-let numeros = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]
+let cardErro = document.querySelector("#cardErro")
+let mensagem_erro = document.querySelector("#mensagem_erro")
 
 
 function cadastrar() {
-  var nomeVar = cadastroNome.value;
+  var UsuarioVar = cadastroNome.value;
   var emailVar = cadastroEmail.value;
   var sexo = cadastroSexo.value
   var senhaVar = cadastroSenha.value;
@@ -32,7 +27,7 @@ function cadastrar() {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      nomeServer: nomeVar,
+      nomeServer: UsuarioVar,
       emailServer: emailVar,
       senhaServer: senhaVar,
       sexoServer: sexo,
@@ -59,22 +54,25 @@ function cadastrar() {
 }
 
 function entrar() {
-  aguardar();
 
-  var nomeVar = loginNome.value;
+  console.log("FUNÇÃO ENTRAR FOI CHAMADA");
+
+  aguardarLogin();
+
+  var UsuarioVar = loginNome.value;
   var senhaVar = loginSenha.value;
 
-  if (nomeVar == "" || senhaVar == "") {
+  if (UsuarioVar == "" || senhaVar == "") {
     cardErro.style.display = "block"
-    mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
-    finalizarAguardar();
+    mensagem_erro.innerHTML = "Campos em branco";
+    finalizarAguardarLogin();
     return false;
   }
   else {
     setInterval(sumirMensagem, 5000)
   }
 
-  console.log("FORM LOGIN: ", nomeVar);
+  console.log("FORM LOGIN: ", UsuarioVar);
   console.log("FORM SENHA: ", senhaVar);
 
   fetch("/usuarios/autenticar", {
@@ -83,7 +81,7 @@ function entrar() {
       "Content-Type": "application/json"
     },
     body: JSON.stringify({
-      nomeServer: nomeVar,
+      nomeServer: UsuarioVar,
       senhaServer: senhaVar
     })
   }).then(function (resposta) {
@@ -96,13 +94,13 @@ function entrar() {
         console.log(json);
         console.log(JSON.stringify(json));
         sessionStorage.EMAIL_USUARIO = json.email;
-        sessionStorage.NOME_USUARIO = json.nome;
+        sessionStorage.NOME_USUARIO = json.usuario;
         sessionStorage.ID_USUARIO = json.id;
         sessionStorage.SEXO_USUARIO = json.sexo;
         sessionStorage.TEMPO_USUARIO = json.tempo;
 
         setTimeout(function () {
-          window.location = "./dashboard/cards.html";
+          window.location = "./Usuario.html";
         }, 1000);
 
       });
@@ -124,73 +122,10 @@ function entrar() {
   return false;
 }
 
-function abrirModal() {
-  modal.showModal()
-}
-function fecharModal() {
-  modal.close()
-}
-function fecharModalLogin() {
-  modalLogin.close()
-}
-function login() {
-  modalLogin.showModal()
-}
 
-cadastroNome.addEventListener('input', function () {
-  let valor = cadastroNome.value
-  let temCaracteresEspeciais = caracteresEspeciais.some(function (caracteresEX) {
-    return valor.includes(caracteresEX);
-  });
 
-  let temNumeros = numeros.some(function (numero) {
-    return valor.includes(numero);
-  });
-
-  if (cadastroNome.value.length <= 5 || !temCaracteresEspeciais || !temNumeros
-    || cadastroNome.value.toUpperCase() == cadastroNome.value || cadastroNome.value.toLowerCase() == cadastroNome.value) {
-    validarNome.textContent = "O nome precisa ter mais de 5 caracteres, um caractere especial, um caractere maisculo, um caractere minusculo e um número"
-  } else {
-    validarNome.textContent = ""
+ function sumirMensagem() {
+    cardErro.style.display = "none";
   }
-
-})
-cadastroEmail.addEventListener('input', function () {
-  let valor = cadastroEmail.value
-  if (!valor.includes("@")) {
-    validarEmail.textContent = "O Email precisa ter Arroba"
-  } else {
-    validarEmail.textContent = ""
-  }
-
-})
-
-cadastroSenha.addEventListener('input', function () {
-  let valorSenha = cadastroSenha.value
-  let temCaracteresEspeciais = caracteresEspeciais.some(function (caracteresEX) {
-    return valorSenha.includes(caracteresEX);
-  });
-
-  let temNumeros = numeros.some(function (numero) {
-    return valorSenha.includes(numero);
-  });
-
-  if (cadastroSenha.value.length <= 5 || !temCaracteresEspeciais || !temNumeros
-    || cadastroSenha.value.toUpperCase() == cadastroSenha.value || cadastroSenha.value.toLowerCase() == cadastroSenha.value) {
-    validarSenha.textContent = "A senha precisa ter mais de 5 caracteres, um caractere especial, um caractere maisculo, um caractere minusculo e um número"
-  } else {
-    validarSenha.textContent = ""
-  }
-
-})
-
-cadastroConfirmar.addEventListener('input', function () {
-  let valor = cadastroConfirmar.value
-  if (valor != cadastroSenha.value) {
-    validarConfirmar.textContent = "Senhas diferentes"
-  } else {
-    validarConfirmar.textContent = ""
-  }
-})
 
 
