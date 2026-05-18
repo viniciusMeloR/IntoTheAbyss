@@ -18,9 +18,6 @@ function cadastrar() {
   var confirmarSenha = cadastroConfirmar.value;
   var tempo = new Date()
 
-
-
-
   fetch("/usuarios/cadastrar", {
     method: "POST",
     headers: {

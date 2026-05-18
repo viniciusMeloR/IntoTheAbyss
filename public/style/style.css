@@ -162,6 +162,10 @@
     transition: transform 0.5s  ;
 
 }
+.descricao h1{
+    color:white
+};
+
 .descricaoAbismo{
     width: 100%;
     height: 500px;
@@ -319,7 +323,8 @@ aside{
     display: flex;
     align-items: center;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.912);
+    background-color: rgba(19, 18, 18, 0.815);
+    height:60px;
 }
 .headerUsuario a{
     margin-right: 20px;
@@ -338,11 +343,18 @@ aside{
     display: flex;
     justify-content: flex-end;
     width: 100%;
+    margin-right: 20px;
 }
 .botaoUsuario a{
-    border-radius: 4px;
-    background-color: beige;
-     transition: 0.5s;
+    border-radius: 8px;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-decoration: solid;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    border: 0px;
+    transition: 0.3s;
 }
 .botaoUsuario a:hover{
     background-color:aqua;
@@ -384,13 +396,19 @@ aside{
     perspective: 1000px;
     height: 300px;
     width: 300px;
-    border-radius: 10px;
+      margin: 10px;
+    gap: 10px;
+    border: 10px;
+    border-radius: 20px;
+    box-shadow: 10px 10px 10px 12px rgb(0, 0, 0);
+    padding: 10px;
     
 }
 .imgPersonagens{
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 10px;
 }
 
 .descricao{
@@ -406,6 +424,7 @@ aside{
     text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
     text-align: center;
     transform: rotateY(180deg);
+    background-color: black;
     
 }
 
@@ -418,13 +437,14 @@ aside{
     transform-style: preserve-3d;
     height: 100%;
     width: 100%;
+    border-radius: 10px;
 }
-
 .front, .descricao{
     position: absolute;
     backface-visibility: hidden;
     height: 100%;
     width: 100%;
+    border-radius: 10px;
 }
 
 .meuPerfil{
@@ -457,7 +477,7 @@ aside{
 }
 
 #myChart{
-      background-color: #e6edf5;
+    background-color: #e6edf5;
   border-radius: 12px;
   padding: 30px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -477,6 +497,7 @@ aside{
     flex-direction: column;
     font-size: 15px;
     font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
 
 }
 .camadasImagem{
@@ -571,11 +592,16 @@ aside{
 }
 .Quizz{
     display: flex;
+    height: 105%;
+    width: 100%;
     color:white; 
     align-items: center;
     flex-direction: column;
     justify-content: center;
     gap: 15px;
+    background-image:url(../assets/quiz.jpeg);
+    background-size: cover;
+
 }
 .Quizz button{
     display: flex;
@@ -654,4 +680,15 @@ aside{
      align-items: center;
     justify-content: center;
     
+}
+
+.selectQuiz{
+    width: 300px;
+    text-align: center;
+    
+}
+
+.tituloOpcoes{
+    font-weight: lighter;
+    font-size: 25px;
 }
