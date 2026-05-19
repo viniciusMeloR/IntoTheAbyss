@@ -42,10 +42,14 @@ function autenticar(req, res) {
     }
 
 }
-function validarSenhaOuUsuario(texto) {
+function validarSenha(senha) {
     let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*]).{6,}$/;
 
-    return regex.test(texto);
+    return regex.test(senha);
+}
+function validarUsuario(usuario){
+    let regex = /^[a-zA-Z]{6,}$/
+    return regex.test(usuario)
 }
 function cadastrar(req, res) {
     var usuario = req.body.nomeServer;
@@ -54,9 +58,9 @@ function cadastrar(req, res) {
     var sexo = req.body.sexoServer;
     var tempo = req.body.tempoServer;
 
-    if (usuario == undefined || !validarSenhaOuUsuario(usuario)) {
+    if (usuario == undefined || !validarUsuario(usuario)) {
         res.status(400).send(
-            "Usuário inválido! Precisa ter no mínimo 6 caracteres, letra maiúscula, minúscula, número e caractere especial."
+            "Usuário inválido!Precisa ter mais de 5 caracteres, letras minusculas e maisculas"
         );
     } else if (email == undefined || !email.includes("@")) {
         res.status(400).send("Email inválido!");

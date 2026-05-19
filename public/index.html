@@ -174,9 +174,8 @@ cadastroNome.addEventListener('input', function () {
     return valor.includes(numero);
   });
 
-  if (cadastroNome.value.length <= 5 || !temCaracteresEspeciais || !temNumeros
-    || cadastroNome.value.toUpperCase() == cadastroNome.value || cadastroNome.value.toLowerCase() == cadastroNome.value) {
-    validarNome.textContent = "O nome precisa ter mais de 5 caracteres, um caractere especial, um caractere maisculo, um caractere minusculo e um número"
+  if (cadastroNome.value.length <= 5  || cadastroNome.value.toUpperCase() == cadastroNome.value || cadastroNome.value.toLowerCase() == cadastroNome.value) {
+    validarNome.textContent = "O nome precisa ter mais de 5 caracteres, caractere maisculo e caractere minusculo"
   } else {
     validarNome.textContent = ""
   }
@@ -185,7 +184,7 @@ cadastroNome.addEventListener('input', function () {
 cadastroEmail.addEventListener('input', function () {
   let valor = cadastroEmail.value
   if (!valor.includes("@")) {
-    validarEmail.textContent = "O Email precisa ter Arroba"
+    validarEmail.textContent = "O Email precisa ter @"
   } else {
     validarEmail.textContent = ""
   }
