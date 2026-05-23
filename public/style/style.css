@@ -590,7 +590,7 @@ aside{
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     justify-self: center;
 }
-.Quizz{
+.Quiz{
     height: 100%;
     width: 100%;
     display: flex;
@@ -603,7 +603,7 @@ aside{
     background-size: cover;
 
 }
-.Quizz button{
+.Quiz button{
     display: flex;
      border-radius: 8px;
     outline: none;
@@ -617,7 +617,7 @@ aside{
     transition: 0.3s;
 }
 
-.Quizz button:hover{
+.Quiz button:hover{
     background-color:aqua;
     cursor: pointer;
     

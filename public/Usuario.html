@@ -13,7 +13,7 @@
 
 </head>
 
-<body>
+<body onload="onloadEsconder()">
   <div class="tela">
     <aside>
       <div class="Menu">
@@ -155,255 +155,258 @@
       <!-- Conteudo do Quiz-->
 
       <div class="meuPerfil" style="display: flex;" id="telaUsuario">
-        <div style="" class="Quizz" id="div_quiz">
+        <div class="Quiz" id="div_quiz">
           <h1 style="font-weight: bolder; font-size: 30px;">QUIZ TIME!</h1>
+          <div id="pontuacaoEJogo">
+            <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
 
-          <body onload="onloadEsconder()">
-            <div id="pontuacaoEJogo">
-              <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
-
-              <div id="pontuacao" class="pontuacao">
-                <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
-                  <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
-                  <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
-                </div>
-                <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
-                  <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
-                    <span id="spanPontuacaoFinal">***</span>
-                  </span>
-                  <span id="msgFinal" class="width-fit-content">***</span>
-                </div>
+            <div id="pontuacao" class="pontuacao">
+              <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
               </div>
-
-              <div id="jogo" class="conteudoQuiz">
-
-                <div id="infoQuestao" class="padding-8">
-                  <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
-                    questões.</span>
-                </div>
-
-                <div id="perguntaDaQuestaoAtual" class="padding-8">
-                  <span id="spanQuestaoExibida" class="text-bold"></span>
-                </div>
-
-                <div id="opcoes" class="flex-colunar padding-8">
-                  <span>
-                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
-                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
-                  </span>
-                  <span>
-                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
-                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
-                  </span>
-                  <span>
-                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
-                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
-                  </span>
-                  <span>
-                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
-                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
-                  </span>
-                </div>
-
-                <div id="botoes" class="flex-colunar padding-8">
-                  <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
-                  <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
-                  <button onclick="quiz()" id="btnConcluir" disabled>Finalizar Quiz</button>
-                  <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
-                </div>
-
+              <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                  <span id="spanPontuacaoFinal">***</span>
+                </span>
+                <span id="msgFinal" class="width-fit-content">***</span>
               </div>
             </div>
-          </body>
 
+            <div id="jogo" class="conteudoQuiz">
+
+              <div id="infoQuestao" class="padding-8">
+                <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                  questões.</span>
+              </div>
+
+              <div id="perguntaDaQuestaoAtual" class="padding-8">
+                <span id="spanQuestaoExibida" class="text-bold"></span>
+              </div>
+
+              <div id="opcoes" class="flex-colunar padding-8">
+                <span>
+                  <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                  <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                </span>
+                <span>
+                  <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                  <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                </span>
+                <span>
+                  <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                  <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                </span>
+                <span>
+                  <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                  <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                </span>
+              </div>
+
+              <div id="botoes" class="flex-colunar padding-8">
+                <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                <button onclick="quiz()" id="btnSalvarQuiz" disabled style="display: none;">SalvarQuiz</button>
+                <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled style="display: none;">Tentar
+                  novamente</button>
+
+              </div>
+
+            </div>
+          </div>
+</body>
+
+</div>
+<div id="dadosUsuario" style="display: none;">
+  <div id="dashboard">
+    <div class="kpi">
+      <table class="tables">
+        <tr>
+          <th>Autor de made in abyss</th>
+        </tr>
+        <tr>
+          <td>Akihito Tsukushi</td>
+        </tr>
+      </table>
+      <table class="tables">
+        <tr>
+          <th>Data pra o novo filme de Made in abyss</th>
+        </tr>
+        <tr>
+          <td>23 de outubro de 2026.</td>
+        </tr>
+      </table>
+    </div>
+    Gráfico de Barras
+    <div>
+      <canvas id="barra"></canvas>
+    </div>
+
+  </div>
+  <div id="dadosUsuarioDireita">
+    <h1 id="nome2"></h1>
+    <h1 id="tempo">Tempo de conta</h1>
+    <img id="quizImg" src="" alt="">
+  </div>
+</div>
+</div>
+
+<div class="apitos titulos" id="telaApitos" style="display: none;">
+  <h1 style="color: white;">Apitos Brancos</h1>
+  <div class="personagens">
+
+    <div class="cartoesPersonagens flipcard">
+      <div class="flipcardinner">
+        <div class="front">
+          <img src="./assets/ApitoBond.png" alt="" class="imgPersonagens">
         </div>
-        <div id="dadosUsuario" style="display: none;">
-          <div id="dashboard">
-            <div class="kpi">
-              <table class="tables">
-                <tr>
-                  <th>Autor de made in abyss</th>
-                </tr>
-                <tr>
-                  <td>Akihito Tsukushi</td>
-                </tr>
-              </table>
-              <table class="tables">
-                <tr>
-                  <th>Data pra o novo filme de Made in abyss</th>
-                </tr>
-                <tr>
-                  <td>23 de outubro de 2026.</td>
-                </tr>
-              </table>
-            </div>
-            <div id="chart"><canvas id="myChart"></canvas></div>
 
-          </div>
-          <div id="dadosUsuarioDireita">
-            <h1 id="nome2"></h1>
-            <h1 id="tempo">Tempo de conta</h1>
-            <img id="quizImg" src="" alt="">
-          </div>
-        </div>
-      </div>
-
-      <div class="apitos titulos" id="telaApitos" style="display: none;">
-        <h1 style="color: white;">Apitos Brancos</h1>
-        <div class="personagens">
-
-          <div class="cartoesPersonagens flipcard">
-            <div class="flipcardinner">
-              <div class="front">
-                <img src="./assets/ApitoBond.png" alt="" class="imgPersonagens">
-              </div>
-
-              <div class="descricao">
-                <h1>O próprio Bondrewd</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
-                  nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
-                  impedit assumenda autem, reprehenderit, corporis optio!</p>
-              </div>
-            </div>
-          </div>
-          <div class="cartoesPersonagens flipcard">
-            <div class="flipcardinner">
-              <div class="front">
-                <img src="./assets/ApitoLiza.png" alt="" class="imgPersonagens">
-              </div>
-
-              <div class="descricao">
-                <h1>Doni</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
-                  nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
-                  impedit assumenda autem, reprehenderit, corporis optio!</p>
-              </div>
-            </div>
-          </div>
-          <div class="cartoesPersonagens flipcard">
-            <div class="flipcardinner">
-              <div class="front">
-                <img src="./assets/ApitoOzen.png" alt="" class="imgPersonagens">
-              </div>
-
-              <div class="descricao">
-                <h1>DESCONHECIDO</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
-                  nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
-                  impedit assumenda autem, reprehenderit, corporis optio!</p>
-              </div>
-            </div>
-          </div>
-          <div class="cartoesPersonagens flipcard">
-            <div class="flipcardinner">
-              <div class="front">
-                <img src="./assets/ApitoX.png" alt="" class="imgPersonagens">
-              </div>
-
-              <div class="descricao">
-                <h1>DESCONHECIDO</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
-                  nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
-                  impedit assumenda autem, reprehenderit, corporis optio!</p>
-              </div>
-            </div>
-          </div>
-          <div class="cartoesPersonagens flipcard">
-            <div class="flipcardinner">
-              <div class="front">
-                <img src="./assets/ApitoXX.png" alt="" class="imgPersonagens">
-              </div>
-
-              <div class="descricao">
-                <h1>DESCONHECIDO</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
-                  nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
-                  impedit assumenda autem, reprehenderit, corporis optio!</p>
-              </div>
-            </div>
-          </div>
-          <div class="cartoesPersonagens flipcard">
-            <div class="flipcardinner">
-              <div class="front">
-                <img src="./assets/ApitoRiko.png" alt="" class="imgPersonagens">
-              </div>
-
-              <div class="descricao">
-                <h1>Prushka</h1>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
-                  nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
-                  impedit assumenda autem, reprehenderit, corporis optio!</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-      <div class="paginaCamadas" id="camadasAbismo" style="display: none;">
-        <div class="conteudoCamadas">
-          <div class="camadas">
-            <div class="divBordas" id="camadasDescricao1">
-              1ª Camada: A Borda do Abismo (0 ~ 1.350 metros)<br>
-              <span style="color: white; font-weight: bolder;">Efeitos: Tontura leve e náusea.</span><br>
-              <span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Camada mais rasa,
-                bastante iluminada e segura para exploradores experientes.</span>
-            </div>
-            <div class="divBordas" id="camadasDescricao2">2ª Camada: A Floresta da Tentação (1.350 ~ 2.600 metros)<br>
-              <span style="color: rgb(43, 10, 10) (5, 247, 17, 0.87); font-weight: bolder;">Efeitos:
-                Náusea intensa, dor de cabeça e
-                dormência nos membros.</span><br>
-              <span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Floresta densa com criaturas
-                perigosas.</span>
-            </div>
-            <div class="divBordas" id="camadasDescricao3"> 3ª Camada: A Grande Falha (2.600 ~ 7.000 metros)<br><span
-                style="color: white; font-weight: bolder;">Efeitos: Vertigem,
-                alucinações visuais e
-                auditivas.</span>
-              <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Uma parede vertical
-                íngreme, lar de predadores aéreos.</span>
-            </div>
-            <div class="divBordas" id="camadasDescricao4">4ª Camada: Os Cálices dos Gigantes (7.000 ~ 12.000 metros)<br>
-              <span style="color: white; font-weight: bolder;">Efeitos:
-                Dores intensas no corpo inteiro,
-                sangramento por todos os orifícios.</span>
-              <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Selva húmida e perigosa
-                com plantas gigantes.</span>
-            </div>
-            <div class="divBordas" id="camadasDescricao5">5ª Camada: O Mar de Cadáveres (12.000 ~ 13.000
-              metros)<br><span style="color: white; font-weight: bolder;">Efeitos:
-                Perda
-                dos sentidos, confusão mental
-                total e perda da noção do próprio corpo.</span>
-              <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Um vasto campo de gelo,
-                quase impossível de retornar
-                de
-                lá.</span>
-            </div>
-            <div class="divBordas" id="camadasDescricao6">6ª Camada: A Cidade Dourada/Capital dos Não-Retornados
-              (13.000+
-              metros)<br> <span style="color: white; font-weight: bolder;">Efeitos: Perda da humanidade
-                (transformação em Narehate), morte, ou raramente a perda de consciência.</span>
-              <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Ponto sem retorno
-                para
-                humanos normais.</span>
-
-            </div>
-            <div class="divBordas" id="camadasDescricao7">7ª Camada: O Vórtice Final (15.500+ metros)<br>
-              <span style="color: white; font-weight: bolder;">Efeitos: Acredita-se ser
-                morte
-                instantânea ou algo pior, "a
-                última fronteira".</span><Br>
-              <span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Pouco se sabe sobre este
-                local, cercado de mistério.</span>
-            </div>
-          </div>
-          <div class="camadasImagem">
-            <img src="./assets/camadas2.jpg" alt="">
-          </div>
+        <div class="descricao">
+          <h1>O próprio Bondrewd</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
+            impedit assumenda autem, reprehenderit, corporis optio!</p>
         </div>
       </div>
     </div>
+    <div class="cartoesPersonagens flipcard">
+      <div class="flipcardinner">
+        <div class="front">
+          <img src="./assets/ApitoLiza.png" alt="" class="imgPersonagens">
+        </div>
+
+        <div class="descricao">
+          <h1>Doni</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
+            impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+      </div>
+    </div>
+    <div class="cartoesPersonagens flipcard">
+      <div class="flipcardinner">
+        <div class="front">
+          <img src="./assets/ApitoOzen.png" alt="" class="imgPersonagens">
+        </div>
+
+        <div class="descricao">
+          <h1>DESCONHECIDO</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
+            impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+      </div>
+    </div>
+    <div class="cartoesPersonagens flipcard">
+      <div class="flipcardinner">
+        <div class="front">
+          <img src="./assets/ApitoX.png" alt="" class="imgPersonagens">
+        </div>
+
+        <div class="descricao">
+          <h1>DESCONHECIDO</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
+            impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+      </div>
+    </div>
+    <div class="cartoesPersonagens flipcard">
+      <div class="flipcardinner">
+        <div class="front">
+          <img src="./assets/ApitoXX.png" alt="" class="imgPersonagens">
+        </div>
+
+        <div class="descricao">
+          <h1>DESCONHECIDO</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
+            impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+      </div>
+    </div>
+    <div class="cartoesPersonagens flipcard">
+      <div class="flipcardinner">
+        <div class="front">
+          <img src="./assets/ApitoRiko.png" alt="" class="imgPersonagens">
+        </div>
+
+        <div class="descricao">
+          <h1>Prushka</h1>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusamus
+            nobis quasi veritatis nulla odit odio doloremque porro harum ipsam tenetur sunt veniam, illo explicabo
+            impedit assumenda autem, reprehenderit, corporis optio!</p>
+        </div>
+      </div>
+    </div>
+
   </div>
+</div>
+<div class="paginaCamadas" id="camadasAbismo" style="display: none;">
+  <div class="conteudoCamadas">
+    <div class="camadas">
+      <div class="divBordas" id="camadasDescricao1">
+        1ª Camada: A Borda do Abismo (0 ~ 1.350 metros)<br>
+        <span style="color: white; font-weight: bolder;">Efeitos: Tontura leve e náusea.</span><br>
+        <span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Camada mais rasa,
+          bastante iluminada e segura para exploradores experientes.</span>
+      </div>
+      <div class="divBordas" id="camadasDescricao2">2ª Camada: A Floresta da Tentação (1.350 ~ 2.600 metros)<br>
+        <span style="color: rgb(43, 10, 10) (5, 247, 17, 0.87); font-weight: bolder;">Efeitos:
+          Náusea intensa, dor de cabeça e
+          dormência nos membros.</span><br>
+        <span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Floresta densa com criaturas
+          perigosas.</span>
+      </div>
+      <div class="divBordas" id="camadasDescricao3"> 3ª Camada: A Grande Falha (2.600 ~ 7.000 metros)<br><span
+          style="color: white; font-weight: bolder;">Efeitos: Vertigem,
+          alucinações visuais e
+          auditivas.</span>
+        <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Uma parede vertical
+          íngreme, lar de predadores aéreos.</span>
+      </div>
+      <div class="divBordas" id="camadasDescricao4">4ª Camada: Os Cálices dos Gigantes (7.000 ~ 12.000 metros)<br>
+        <span style="color: white; font-weight: bolder;">Efeitos:
+          Dores intensas no corpo inteiro,
+          sangramento por todos os orifícios.</span>
+        <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Selva húmida e perigosa
+          com plantas gigantes.</span>
+      </div>
+      <div class="divBordas" id="camadasDescricao5">5ª Camada: O Mar de Cadáveres (12.000 ~ 13.000
+        metros)<br><span style="color: white; font-weight: bolder;">Efeitos:
+          Perda
+          dos sentidos, confusão mental
+          total e perda da noção do próprio corpo.</span>
+        <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Um vasto campo de gelo,
+          quase impossível de retornar
+          de
+          lá.</span>
+      </div>
+      <div class="divBordas" id="camadasDescricao6">6ª Camada: A Cidade Dourada/Capital dos Não-Retornados
+        (13.000+
+        metros)<br> <span style="color: white; font-weight: bolder;">Efeitos: Perda da humanidade
+          (transformação em Narehate), morte, ou raramente a perda de consciência.</span>
+        <br><span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Ponto sem retorno
+          para
+          humanos normais.</span>
+
+      </div>
+      <div class="divBordas" id="camadasDescricao7">7ª Camada: O Vórtice Final (15.500+ metros)<br>
+        <span style="color: white; font-weight: bolder;">Efeitos: Acredita-se ser
+          morte
+          instantânea ou algo pior, "a
+          última fronteira".</span><Br>
+        <span style="color: rgba(5, 9, 98, 0.597); font-weight: bolder;">Descrição: Pouco se sabe sobre este
+          local, cercado de mistério.</span>
+      </div>
+    </div>
+    <div class="camadasImagem">
+      <img src="./assets/camadas2.jpg" alt="">
+    </div>
+  </div>
+</div>
+</div>
+</div>
 
 </body>
 
@@ -511,8 +514,8 @@
     preencherHTMLcomQuestaoAtual(0)
 
     btnSubmeter.disabled = false
-    btnProx.disabled = true
-    btnConcluir.disabled = true
+    btnProx.disabled = false
+    btnSalvarQuiz.disabled = true
     btnTentarNovamente.disabled = true
   }
 
@@ -664,9 +667,13 @@
     document.getElementById('jogo').classList.add("text-new-gray")
 
     btnProx.disabled = true
+    btnProx.style.display = "none"
     btnSubmeter.disabled = true
-    btnConcluir.disabled = false
+    btnSubmeter.style.display = "none"
+    btnSalvarQuiz.disabled = false
+    btnSalvarQuiz.style.display = "flex"
     btnTentarNovamente.disabled = false
+    btnTentarNovamente.style.display = "flex"
 
   }
   let nomeStorage = sessionStorage.getItem("NOME_USUARIO")
@@ -700,6 +707,7 @@
   let dadosUsuario = document.getElementById("dadosUsuario")
 
   function quiz() {
+    alert("QuizSalvo!Você só podera tentar fazer o Quiz novamente ao fazer Login")
     divQuiz.style.display = "none"
     dadosUsuario.style.display = "flex"
     let idUsuarioArmazem = sessionStorage.ID_USUARIO
@@ -716,9 +724,79 @@
       }),
     })
       .then(function (resposta) {
+        obterDados()
         console.log("resposta: ", resposta);
       })
     return false;
+    
   }
 
+  function obterDados() {
+    let idUsuario = sessionStorage.ID_USUARIO;
+    fetch(`/quiz/buscarQuizPorUsuario/${idUsuario}`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log("DADOS DO BACKEND:", data);
+        plotarGraficoBarra(data)
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
+  }
+  let myChart = null;
+  function plotarGraficoBarra(dados) {
+
+    let labels = []
+    let pontuacoes = []
+    for (let i = 0; i < dados.pontuacao.length; i++) {
+      labels.push(`Quizz ${i + 1}`)
+      pontuacoes.push(dados.acertos[i] - dados.erros[i])
+    }
+    var ctx = document.getElementById("barra").getContext('2d');
+
+    if (myChart) {
+      myChart.destroy();
+    }
+    var myChart = new Chart(ctx, {
+      type: 'bar', // Tipo de gráfico: barra
+      data: {// Dados para o gráfico
+        labels: labels, // Rótulos no eixo X
+        datasets: [{
+          label: 'Pontuacao', // Nome do conjunto de dados
+          data: pontuacoes, // Dados dos votos
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)', // Cor da borda das barras
+          ],
+          borderWidth: 1 // Largura da borda das barras
+        }, {
+          label: 'Acertos', // Nome do conjunto de dados
+          data: dados.acertos, // Dados dos votos
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)', // Cor da borda das barras
+          ],
+          borderWidth: 1 // Largura da borda das barras
+        },
+        {
+          label: 'Erros', // Nome do conjunto de dados
+          data: dados.erros, // Dados dos votos
+          backgroundColor: [
+            'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+          ],
+          borderColor: [
+            'rgba(255, 99, 132, 1)', // Cor da borda das barras
+          ],
+          borderWidth: 1 // Largura da borda das barras
+        }
+        ]
+      },
+    });
+  }
 </script>

@@ -23,7 +23,7 @@ function cadastrar() {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({
+    body:JSON.stringify({
       nomeServer: UsuarioVar,
       emailServer: emailVar,
       senhaServer: senhaVar,
@@ -36,9 +36,15 @@ function cadastrar() {
 
       if (resposta.ok) {
         setTimeout(() => {
+          alert("Cadastro realizado com sucesso")
           window.location = "index.html";
         }, "2000");
-      } else {
+      } else {if (!resposta.ok) {
+  resposta.text().then(texto => {
+    console.log(texto);
+    alert(texto);
+  });
+}
         alert("Verifique se os dados estão certos!")
         throw "Houve um erro ao tentar realizar o cadastro!";
       }

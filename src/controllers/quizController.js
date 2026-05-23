@@ -9,11 +9,11 @@ function cadastrar(req, res) {
 
     // Faça as validações dos valores
      if (pontuacao == undefined)  {
-        res.status(400).send("Seu quiz1 está undefined!");
+        res.status(400).send("Sua pontuação undefined!");
     } else if (acertos==undefined) {
-        res.status(400).send("Seu quiz2 está undefined");
+        res.status(400).send("Seus acertos estão undefined");
     } else  if (erros == undefined)  {
-        res.status(400).send("Seu quizz3 está undefined");
+        res.status(400).send("Seus erros estão undefined");
     }else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
@@ -35,6 +35,29 @@ function cadastrar(req, res) {
     }
 }
 
+async function buscarQuizPorUsuario(req,res){
+    try{
+    let idUsuario = req.params.idUsuario;
+    let dadosQuizUsuario = await quizmodel.buscarQuizPorUsuario(idUsuario);
+    let pontuacao = []
+    let acertos = []
+    let erros = []
+    for(let i=0;i<dadosQuizUsuario.length;i++){
+        pontuacao.push(dadosQuizUsuario[i].pontuacao);
+        acertos.push(dadosQuizUsuario[i].acertos);
+        erros.push(dadosQuizUsuario[i].erros);
+    }
+    return res.status(200).json({
+        pontuacao:pontuacao,
+        acertos:acertos,
+        erros:erros
+    });
+}catch (error) {
+        console.error(error);
+        return res.status(500).json({ erro: "Erro ao buscar dados do MySQL" });
+}
+}
 module.exports = {
-    cadastrar
+    cadastrar,
+    buscarQuizPorUsuario
 }

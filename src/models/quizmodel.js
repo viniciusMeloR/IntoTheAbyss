@@ -6,12 +6,17 @@ function cadastrar(pontuacao,acertos, erros, idUsuario) {
     // Insira exatamente a query do banco aqui, lembrando da nomenclatura exata nos valores
     //  e na ordem de inserção dos dados.
     var instrucaoSql = `
-        INSERT INTO quizz (pontuacao,acertos,erros,fkUsuarioAbyss) VALUES ('${pontuacao}', '${acertos}', '${erros}', '${idUsuario}');
+        INSERT INTO quiz(pontuacao,acertos,erros,fkUsuarioAbyss) VALUES ('${pontuacao}', '${acertos}', '${erros}', '${idUsuario}');
     `;
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
 }
+function buscarQuizPorUsuario(usuario) {
+    var instrucaoSql = `SELECT * FROM quiz WHERE fkUsuarioAbyss = ${usuario};`
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
-    cadastrar
+    cadastrar,
+    buscarQuizPorUsuario
 };

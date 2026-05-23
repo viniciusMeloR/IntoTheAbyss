@@ -44,12 +44,11 @@ function autenticar(req, res) {
 }
 function validarSenha(senha) {
     let regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%*]).{6,}$/;
-
     return regex.test(senha);
 }
 function validarUsuario(usuario){
-    let regex = /^[a-zA-Z]{6,}$/
-    return regex.test(usuario)
+    let regex = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+    return regex.test(usuario);
 }
 function cadastrar(req, res) {
     var usuario = req.body.nomeServer;
@@ -65,7 +64,7 @@ function cadastrar(req, res) {
     } else if (email == undefined || !email.includes("@")) {
         res.status(400).send("Email inválido!");
 
-    } else if (senha == undefined || !validarSenhaOuUsuario(senha)) {
+    } else if (senha == undefined || !validarSenha(senha)) {
         res.status(400).send(
             "Senha inválida! Precisa ter no mínimo 6 caracteres, letra maiúscula, minúscula, número e caractere especial."
         );
