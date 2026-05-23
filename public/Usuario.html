@@ -152,94 +152,69 @@
         </div>
       </div>
 
-      <!-- Conteudo da dash board-->
+      <!-- Conteudo do Quiz-->
 
       <div class="meuPerfil" style="display: flex;" id="telaUsuario">
         <div style="" class="Quizz" id="div_quiz">
           <h1 style="font-weight: bolder; font-size: 30px;">QUIZ TIME!</h1>
-          <div class="perguntasQuiz">
-            <div id="pergunta1">
-              <h1>Quais são os dois personagens principais de Made in Abyss?</h1>
-              <button>Riko e Nanachi</button>
-              <button>Reg e Liza</button>
-              <button>Riko e Reg</button>
-              <button>Faputa e Bondrewd</button>
-              <button>Riko e Mithy</button>
+
+          <body onload="onloadEsconder()">
+            <div id="pontuacaoEJogo">
+              <button id="btnIniciarQuiz" onclick="iniciarQuiz()">INICIAR QUIZ</button>
+
+              <div id="pontuacao" class="pontuacao">
+                <div id="pontuacaoDuranteJogo" class="flex-colunar padding-8">
+                  <span class="width-fit-content">Quantidade de acertos: <span id="spanCertas"></span></span>
+                  <span class="width-fit-content">Quantidade de erros: <span id="spanErradas"></span></span>
+                </div>
+                <div id="pontuacaoFinalJogo" class="flex-colunar padding-8">
+                  <span id="pontuacaoFinal" class="width-fit-content">Pontuação Final:
+                    <span id="spanPontuacaoFinal">***</span>
+                  </span>
+                  <span id="msgFinal" class="width-fit-content">***</span>
+                </div>
+              </div>
+
+              <div id="jogo" class="conteudoQuiz">
+
+                <div id="infoQuestao" class="padding-8">
+                  <span>Questão atual: <span id="spanNumeroDaQuestaoAtual"></span> de <span id="qtdQuestoes"></span>
+                    questões.</span>
+                </div>
+
+                <div id="perguntaDaQuestaoAtual" class="padding-8">
+                  <span id="spanQuestaoExibida" class="text-bold"></span>
+                </div>
+
+                <div id="opcoes" class="flex-colunar padding-8">
+                  <span>
+                    <input type="radio" id="primeiraOpcao" name="option" class="radio" value="alternativaA" />
+                    <label for="primeiraOpcao" class="option" id="labelOpcaoUm"></label>
+                  </span>
+                  <span>
+                    <input type="radio" id="segundaOpcao" name="option" class="radio" value="alternativaB" />
+                    <label for="segundaOpcao" class="option" id="labelOpcaoDois"></label>
+                  </span>
+                  <span>
+                    <input type="radio" id="terceiraOpcao" name="option" class="radio" value="alternativaC" />
+                    <label for="terceiraOpcao" class="option" id="labelOpcaoTres"></label>
+                  </span>
+                  <span>
+                    <input type="radio" id="quartaOpcao" name="option" class="radio" value="alternativaD" />
+                    <label for="quartaOpcao" class="option" id="labelOpcaoQuatro"></label>
+                  </span>
+                </div>
+
+                <div id="botoes" class="flex-colunar padding-8">
+                  <button onclick="submeter()" id="btnSubmeter">Submeter resposta</button>
+                  <button onclick="avancar()" id="btnProx" disabled>Avançar para próxima questão</button>
+                  <button onclick="quiz()" id="btnConcluir" disabled>Finalizar Quiz</button>
+                  <button onclick="tentarNovamente()" id="btnTentarNovamente" disabled>Tentar novamente</button>
+                </div>
+
+              </div>
             </div>
-            <div id="pergunta2">
-              <h1>Qual o nome do humanoide que ajuda Riko na sua aventura?</h1>
-              <button>Bondrewd</button>
-              <button>Reg</button>
-              <button>XV-15</button>
-              <button>Ozen</button>
-              <button>TX-16</button>
-            </div>
-            <div id="pergunta3">
-              <h1>A quinta camada é conhecida pela sua característica de:</h1>
-              <button> Selva húmida e perigosa com plantas gigantes</button>
-              <button>Uma parede vertical íngreme, lar de predadores aéreos</button>
-              <button>Floresta densa com criaturas perigosas</button>
-              <button>Um vasto campo de gelo, quase impossível de retornar de lá</button>
-              <button>Uma cidade dourada</button>
-            </div>
-            <div id="pergunta4">
-               <h1>Como é chamado o portador(a) do apito branco mais poderoso?</h1>
-              <button>Riko</button>
-              <button>Ozen</button>
-              <button>Faputa</button>
-              <button>Bondrewd</button>
-              <button>Liza</button>
-            </div>
-            <div id="pergunta5">
-               <h1>Em qual camada é comum os efeitos de dores intensas no corpo inteiro e sangramento por todos os orifícios</h1>
-              <button>1ªcamada</button>
-              <button>2ªcamada</button>
-              <button>3ªcamada</button>
-              <button>4ªcamada</button>
-              <button>5ªcamada</button>
-            </div>
-            <div id="pergunta6">
-               <h1>Qual o nome da narehate mais forte?</h1>
-              <button>Liza</button>
-              <button>Ozen</button>
-              <button>Lucy</button>
-              <button>Faputa</button>
-              <button>Mithy</button>
-            </div>
-            <div id="pergunta7">
-              <h1>Qual o nome do vilão que utiliza "cartuchos" com partes internas de crianças para se proteger da maldição do abismo?</h1>
-              <button>Gaburoon</button>
-              <button>Ozen</button>
-              <button>Reg</button>
-              <button>Bondrewd</button>
-              <button>Wazukyan</button>
-            </div>
-            <div id="pergunta8">
-               <h1>A vila Narehate de Ilblu foi forjada pelo artefato:</h1>
-              <button>Berço do desejo</button>
-              <button>Esfera Solar</button>
-              <button>Mitógrafo</button>
-              <button>Colheita de chamas</button>
-              <button>Terceiras obras</button>
-            </div>
-            <div id="pergunta9">
-                <h1>O artefato Colheita de chamas foi originalmente utilizado por</h1>
-              <button>Bondrewd</button>
-              <button>Liza</button>
-              <button>Mithy</button>
-              <button>Reg</button>
-              <button>Tereza</button>
-            </div>
-            <div id="pergunta10">
-              <h1>O apelido de "Soberano da Alvorada" foi dado ao:</h1>
-              <button>Bondrewd</button>
-              <button>Wazukyan</button>
-              <button>Belaf</button>
-              <button>Majikaja</button>
-              <button>Maaa</button>
-            </div>
-          </div>
-          <button onclick="quiz();">QUIZ</button>
+          </body>
 
         </div>
         <div id="dadosUsuario" style="display: none;">
@@ -435,6 +410,265 @@
 </html>
 
 <script>
+  const listaDeQuestoes = [
+
+    {
+      pergunta: "Quais são os dois personagens principais de Made in Abyss?",
+      alternativaA: "Riko e Nanachi",
+      alternativaB: "Reg e Liza",
+      alternativaC: "Riko e Reg",
+      alternativaD: "Faputa e Bondrewd",
+      alternativaCorreta: "alternativaC"
+    },
+
+    {
+      pergunta: "Qual o nome do humanoide que ajuda Riko na sua aventura?",
+      alternativaA: "Bondrewd",
+      alternativaB: "Reg",
+      alternativaC: "XV-15",
+      alternativaD: "Ozen",
+      alternativaCorreta: "alternativaB"
+    },
+
+    {
+      pergunta: "A quinta camada é conhecida pela sua característica de:",
+      alternativaA: "Selva húmida e perigosa com plantas gigantes",
+      alternativaB: "Uma parede vertical íngreme, lar de predadores aéreos",
+      alternativaC: "Floresta densa com criaturas perigosas",
+      alternativaD: "Um vasto campo de gelo, quase impossível de retornar de lá",
+      alternativaCorreta: "alternativaD"
+    },
+
+    {
+      pergunta: "Como é chamado o portador(a) do apito branco mais poderoso?",
+      alternativaA: "Liza",
+      alternativaB: "Ozen",
+      alternativaC: "Faputa",
+      alternativaD: "Bondrewd",
+      alternativaCorreta: "alternativaA"
+    },
+
+    {
+      pergunta: "Em qual camada é comum os efeitos de dores intensas no corpo inteiro e sangramento por todos os orifícios",
+      alternativaA: "1ªcamada",
+      alternativaB: "2ªcamada",
+      alternativaC: "3ªcamada",
+      alternativaD: "4ªcamada",
+      alternativaCorreta: "alternativaD"
+    },
+
+    {
+      pergunta: "Qual o nome da narehate mais forte?",
+      alternativaA: "Liza",
+      alternativaB: "Ozen",
+      alternativaC: "Faputa",
+      alternativaD: "Lucy",
+      alternativaCorreta: "alternativaC"
+    },
+
+    {
+      pergunta: "A vila Narehate de Ilblu foi forjada pelo artefato:",
+      alternativaA: "Berço do desejo",
+      alternativaB: "Esfera Solar",
+      alternativaC: "Mitógrafo",
+      alternativaD: "Colheita de chamas",
+      alternativaCorreta: "alternativaA"
+    },
+
+    {
+      pergunta: "O apelido de Soberano da Alvorada foi dado ao:",
+      alternativaA: "Bondrewd",
+      alternativaB: "Wazukyan",
+      alternativaC: "Belaf",
+      alternativaD: "Majikaja",
+      alternativaCorreta: "alternativaA"
+    }
+
+
+  ]
+
+  // variáveis globais    
+  let numeroDaQuestaoAtual = 0
+  let pontuacaoFinal = 0
+  let tentativaIncorreta = 0
+  let certas = 0
+  let erradas = 0
+  let quantidadeDeQuestoes = listaDeQuestoes.length
+  // let isUltima = numeroDaQuestaoAtual == quantidadeDeQuestoes-1 ? true : false
+
+  function onloadEsconder() {
+    document.getElementById('pontuacao').style.display = "none"
+    document.getElementById('jogo').style.display = "none"
+  }
+
+  function iniciarQuiz() {
+    document.getElementById('pontuacao').style.display = "flex"
+    document.getElementById('jogo').style.display = "flex"
+    document.getElementById('btnIniciarQuiz').style.display = "none"
+
+    document.getElementById('qtdQuestoes').innerHTML = quantidadeDeQuestoes
+
+    preencherHTMLcomQuestaoAtual(0)
+
+    btnSubmeter.disabled = false
+    btnProx.disabled = true
+    btnConcluir.disabled = true
+    btnTentarNovamente.disabled = true
+  }
+
+  function preencherHTMLcomQuestaoAtual(index) {
+    habilitarAlternativas(true)
+    const questaoAtual = listaDeQuestoes[index]
+    numeroDaQuestaoAtual = index
+    console.log("questaoAtual")
+    console.log(questaoAtual)
+    document.getElementById("spanNumeroDaQuestaoAtual").innerHTML = Number(index) + 1 // ajustando porque o index começa em 0
+    document.getElementById("spanQuestaoExibida").innerHTML = questaoAtual.pergunta;
+    document.getElementById("labelOpcaoUm").innerHTML = questaoAtual.alternativaA;
+    document.getElementById("labelOpcaoDois").innerHTML = questaoAtual.alternativaB;
+    document.getElementById("labelOpcaoTres").innerHTML = questaoAtual.alternativaC;
+    document.getElementById("labelOpcaoQuatro").innerHTML = questaoAtual.alternativaD;
+  }
+
+  function submeter() {
+    const options = document.getElementsByName("option"); // recupera alternativas no html
+
+    let hasChecked = false
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].checked) {
+        hasChecked = true
+        break
+      }
+    }
+
+    if (!hasChecked) {
+      alert("Não há alternativas escolhidas. Escolha uma opção.")
+    } else {
+      btnSubmeter.disabled = true
+      btnProx.disabled = false
+
+      habilitarAlternativas(false)
+
+      checarResposta()
+    }
+  }
+
+  function habilitarAlternativas(trueOrFalse) {
+    let opcaoEscolhida = trueOrFalse ? false : true
+
+    primeiraOpcao.disabled = opcaoEscolhida
+    segundaOpcao.disabled = opcaoEscolhida
+    terceiraOpcao.disabled = opcaoEscolhida
+    quartaOpcao.disabled = opcaoEscolhida
+
+  }
+
+  function avancar() {
+    btnProx.disabled = true
+    btnSubmeter.disabled = false
+
+    desmarcarRadioButtons()
+
+    if (numeroDaQuestaoAtual < quantidadeDeQuestoes - 1) {
+      preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+    } else if (numeroDaQuestaoAtual == quantidadeDeQuestoes - 1) {
+      alert("Atenção... a próxima é a ultima questão!")
+      preencherHTMLcomQuestaoAtual(numeroDaQuestaoAtual)
+    } else {
+      finalizarJogo()
+    }
+    limparCoresBackgroundOpcoes()
+  }
+
+  function tentarNovamente() {
+    // atualiza a página
+    window.location.reload()
+  }
+
+  function checarResposta() {
+    const questaoAtual = listaDeQuestoes[numeroDaQuestaoAtual] // questão atual 
+    const respostaQuestaoAtual = questaoAtual.alternativaCorreta // qual é a resposta correta da questão atual
+
+    const options = document.getElementsByName("option"); // recupera alternativas no html
+
+    let alternativaCorreta = null // variável para armazenar a alternativa correta
+
+    options.forEach((option) => {
+      if (option.value === respostaQuestaoAtual) {
+        console.log("alternativaCorreta está no componente: " + alternativaCorreta)
+        alternativaCorreta = option.labels[0].id
+      }
+    })
+
+    // verifica se resposta assinalada é correta
+    options.forEach((option) => {
+      if (option.checked === true && option.value === respostaQuestaoAtual) {
+        document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+        pontuacaoFinal++
+        certas++
+        document.getElementById("spanCertas").innerHTML = certas
+        numeroDaQuestaoAtual++
+      } else if (option.checked && option.value !== respostaQuestaoAtual) {
+        const wrongLabelId = option.labels[0].id
+
+        document.getElementById(wrongLabelId).classList.add("text-danger-with-bg")
+        document.getElementById(alternativaCorreta).classList.add("text-success-with-bg")
+        tentativaIncorreta++
+        erradas++
+        document.getElementById("spanErradas").innerHTML = erradas
+        numeroDaQuestaoAtual++
+      }
+    })
+  }
+
+  function limparCoresBackgroundOpcoes() {
+    const options = document.getElementsByName("option");
+    options.forEach((option) => {
+      document.getElementById(option.labels[0].id).classList.remove("text-danger-with-bg")
+      document.getElementById(option.labels[0].id).classList.remove("text-success-with-bg")
+    })
+  }
+
+  function desmarcarRadioButtons() {
+    const options = document.getElementsByName("option");
+    for (let i = 0; i < options.length; i++) {
+      options[i].checked = false;
+    }
+  }
+
+  function finalizarJogo() {
+    let textoParaMensagemFinal = null
+    let classComCoresParaMensagemFinal = null
+    const porcentagemFinalDeAcertos = pontuacaoFinal / quantidadeDeQuestoes
+
+    if (porcentagemFinalDeAcertos <= 0.3) {
+      textoParaMensagemFinal = "Parece que você não estudou..."
+      classComCoresParaMensagemFinal = "text-danger-with-bg"
+    }
+    else if (porcentagemFinalDeAcertos > 0.3 && porcentagemFinalDeAcertos < 0.9) {
+      textoParaMensagemFinal = "Pode melhorar na próxima, hein!"
+      classComCoresParaMensagemFinal = "text-warning-with-bg"
+    }
+    else if (porcentagemFinalDeAcertos >= 0.9) {
+      textoParaMensagemFinal = "Uau, parabéns!"
+      classComCoresParaMensagemFinal = "text-success-with-bg"
+    }
+
+    textoParaMensagemFinal += "<br> Você acertou " + Math.round((porcentagemFinalDeAcertos) * 100) + "% das questões."
+
+
+    document.getElementById('msgFinal').innerHTML = textoParaMensagemFinal
+    document.getElementById('msgFinal').classList.add(classComCoresParaMensagemFinal)
+    document.getElementById('spanPontuacaoFinal').innerHTML = pontuacaoFinal
+
+    document.getElementById('jogo').classList.add("text-new-gray")
+
+    btnProx.disabled = true
+    btnSubmeter.disabled = true
+    btnConcluir.disabled = false
+    btnTentarNovamente.disabled = false
+
+  }
   let nomeStorage = sessionStorage.getItem("NOME_USUARIO")
   let nome = document.getElementById("nome")
   if (nomeStorage) {
@@ -463,18 +697,11 @@
 
   let divQuiz = document.getElementById("div_quiz")
   let sexoStorage = sessionStorage.getItem("SEXO_USUARIO")
-  let selectAventura = document.querySelector("#select_aventura")
-  let selectArma = document.querySelector("#select_arma")
-  let selectAnimal = document.querySelector("#select_animal")
-  let selectPet = document.querySelector("#select_pet")
-  let quizImg = document.getElementById("quizImg")
   let dadosUsuario = document.getElementById("dadosUsuario")
-  function quiz() {
 
-    let quiz1Aventura = selectAventura.value
-    let quiz2Arma = selectArma.value
-    let quiz3Animal = selectAnimal.value
-    let quiz4Pet = selectPet.value
+  function quiz() {
+    divQuiz.style.display = "none"
+    dadosUsuario.style.display = "flex"
     let idUsuarioArmazem = sessionStorage.ID_USUARIO
     fetch("/quiz/cadastrar", {
       method: "POST",
@@ -482,73 +709,16 @@
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        quiz1: quiz1Aventura,
-        quiz2: quiz2Arma,
-        quiz3: quiz3Animal,
-        quiz4: quiz4Pet,
-        idUsuario: idUsuarioArmazem
+        idUsuario: idUsuarioArmazem,
+        pontuacao: pontuacaoFinal,
+        acertos: certas,
+        erros: erradas
       }),
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
-
-        personagem(quiz1Aventura, quiz2Arma, quiz3Animal, quiz4Pet)
       })
     return false;
-
-
-
   }
-  function personagem(quiz1Aventura, quiz2Arma, quiz3Animal, quiz4Pet) {
 
-    /* let lista = [quiz1Aventura, quiz2Arma, quiz3Animal, quiz4Pet]
-    let listaEmString = lista.join(",")
-    let json = {}
-    let json2 = {}
-    let contador = 1
-    let contador2 = 82
-    for (let a = 1; a <= 3; a++) {
-      for (let b = 1; b <= 3; b++) {
-        for (let c = 1; c <= 3; c++) {
-          for (let d = 1; d <= 3; d++) {
-            let chave = `${a},${b},${c},${d}`
-            json[chave] = `./assets/quizz/quizz${contador}.jpg`
-            json2[chave] = `./assets/quizz/quizz${contador2}.jpg`
-            contador++
-            contador2++
-          }
-        }
-      }
-    } */
-    if (sexoStorage == "Masculino" && quiz1Aventura == 1) {
-      quizImg.src = "../assets/quizz/quizz1.jpg"
-    } else if (quiz1Aventura == 2) {
-      quizImg.src = "../assets/quizz/quizz2.jpg"
-    } else if (quiz1Aventura == 3) {
-      quizImg.src = "../assets/quizz/quizz3.jpg"
-    }
-    if (sexoStorage == "Feminino" && quiz1Aventura == 1) {
-      quizImg.src = "../assets/quizz/quizz6.jpg"
-    } else if (quiz1Aventura == 2) {
-      quizImg.src = "../assets/quizz/quizz7.jpg"
-    } else if (quiz1Aventura == 3) {
-      quizImg.src = "../assets/quizz/quizz8.jpg"
-    }
-    if (sexoStorage == "Outro" && quiz1Aventura == 1) {
-      quizImg.src = "../assets/quizz/quizz9.jpg"
-    } else if (quiz1Aventura == 2) {
-      quizImg.src = "../assets/quizz/quizz10.jpg"
-    } else if (quiz1Aventura == 3) {
-      quizImg.src = "../assets/quizz/quizz7.jpg"
-    }
-
-    divQuiz.style.display = "none"
-    dadosUsuario.style.display = "flex"
-    /* if (sexoStorage == "Masculino") {
-      quizImg.src = json[listaEmString]
-    } else {
-      quizImg.src = json2[listaEmString]
-    } */
-
-  }
 </script>

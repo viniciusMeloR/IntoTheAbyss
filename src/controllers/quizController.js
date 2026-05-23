@@ -2,25 +2,22 @@ var quizmodel = require("../models/quizmodel");
 
 function cadastrar(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var quiz1 = req.body.quiz1;
-    var quiz2 = req.body.quiz2;
-    var quiz3 = req.body.quiz3;
-    var quiz4 = req.body.quiz4;
+    var pontuacao = req.body.pontuacao;
+    var acertos = req.body.acertos;
+    var erros = req.body.erros;
     var idUsuario = req.body.idUsuario
 
     // Faça as validações dos valores
-     if (quiz1 == undefined)  {
+     if (pontuacao == undefined)  {
         res.status(400).send("Seu quiz1 está undefined!");
-    } else if (quiz2==undefined) {
+    } else if (acertos==undefined) {
         res.status(400).send("Seu quiz2 está undefined");
-    } else  if (quiz3 == undefined)  {
+    } else  if (erros == undefined)  {
         res.status(400).send("Seu quizz3 está undefined");
-    } else if (quiz4==undefined) {
-        res.status(400).send("Seu quizz4 está undefined");
-    } else {
+    }else {
 
         // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-        quizmodel.cadastrar(quiz1, quiz2, quiz3, quiz4, idUsuario)
+        quizmodel.cadastrar(pontuacao, acertos, erros, idUsuario)
             .then(
                 function (resultado) {
                     res.json(resultado);
