@@ -18,7 +18,7 @@ function buscarQuizPorUsuario(usuario) {
 function buscarEstatisticas() {
     var instrucaoSql = `SELECT usuarioAbyss.usuario AS usuario, AVG(pontuacao) AS media,
      MAX(pontuacao) AS maximo, MIN(pontuacao) AS minimo FROM quiz JOIN usuarioAbyss ON fkUsuarioAbyss = idUsuario
-     GROUP BY usuarioAbyss.usuario ORDER BY media DESC LIMIT 5;`
+     GROUP BY usuarioAbyss.usuario ORDER BY media DESC;`
     return database.executar(instrucaoSql);
 }
 

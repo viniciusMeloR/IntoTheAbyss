@@ -222,18 +222,26 @@
     <div class="kpi">
       <table class="tables">
         <tr>
-          <th>Autor de made in abyss</th>
+          <th>TOP1 EM PONTUAÇÃO</th>
         </tr>
         <tr>
-          <td>Akihito Tsukushi</td>
+          <td id="top1"></td>
+        </tr>
+      </table>
+        <table class="tables">
+        <tr>
+          <th>ULTIMO EM PONTUAÇÃO</th>
+        </tr>
+        <tr>
+          <td id="ultimo"></td>
         </tr>
       </table>
       <table class="tables">
         <tr>
-          <th>Data pra o novo filme de Made in abyss</th>
+          <th>Data para o novo filme de Made in abyss</th>
         </tr>
         <tr>
-          <td>23 de outubro de 2026.</td>
+          <td id = "cronometroFilme"></td>
         </tr>
       </table>
     </div>
@@ -713,6 +721,29 @@
     tempo.innerHTML = `Deu boqueta`
   }
 
+  let dataNovoFilme = new Date(2026, 9, 23, 0, 0, 0).getTime();
+  let tempoNovoFilme = document.getElementById("cronometroFilme")
+let cronometro = setInterval(function() {
+    let agora = new Date().getTime();
+    
+    // Calcula a diferença em milissegundos
+    let diferenca = dataNovoFilme - agora;
+    
+    // Se a data alvo já passou
+    if (diferenca < 0) {
+        clearInterval(cronometro);
+        console.log("A data já passou!");
+        return;
+    }
+    let dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));// pega o valor em milisegundos da diferença e divide pela quantidade de dias
+    let horas = Math.floor((diferenca % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    let minutos = Math.floor((diferenca % (1000 * 60 * 60)) / (1000 * 60));
+    let segundos = Math.floor((diferenca % (1000 * 60)) / 1000);
+
+    tempoNovoFilme.innerHTML = `(${dias}d ${horas}h ${minutos}m ${segundos}s)`;
+    
+}, 1000);
+
 
   let divQuiz = document.getElementById("div_quiz")
   let sexoStorage = sessionStorage.getItem("SEXO_USUARIO")
@@ -771,16 +802,24 @@
   }
   let myChart = null;
    let myChart2 = null;
-
+  let top1=document.getElementById("top1")
+  let ultimo = document.getElementById("ultimo")
   function mostrarEstatisticas(dados) { 
     //Não usei for pois aqui está recebendo um json do back end(dados que não precisa estar em uma array)
       var ctx2 = document.getElementById("barra2").getContext('2d');
+    
     let maioresPontuadores= []
     let maioresMedias = []
     for(let i =0; i<dados.length;i++){
       maioresPontuadores.push(dados[i].usuario)
       maioresMedias.push(dados[i].media)
     }
+
+    let top1Pontuador = maioresPontuadores[0]
+    let ultimoPontuador = maioresPontuadores[maioresPontuadores.length-1]
+    top1.innerHTML = `${top1Pontuador}`
+    ultimo.innerHTML = `${ultimoPontuador}`
+
     if (myChart2) {
       myChart2.destroy();
     }
