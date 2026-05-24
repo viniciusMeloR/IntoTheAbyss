@@ -34,7 +34,7 @@
       </div>
       <!--      Conteudo dos flip cards -->
       <div class="titulos" id="personagensPrincipais" style="display: none;">
-        <h1 class="Efeitos">Personagens Principais</h1>
+        <h1 style="color: white;">Personagens Principais</h1>
         <div class="personagens">
 
           <div class="cartoesPersonagens flipcard">
@@ -247,17 +247,19 @@
         </tr>
       </table>
     </div>
-    Gráfico de Barras
-    <div>
+    <span class="tituloGrafico">Dados das respostas dos quizzes</span>
+    <div class="graficos">
       <canvas id="barra"></canvas>
     </div>
-    <div>
+    <span class="tituloGrafico">Ranking de pontuação</span>
+    <div class="graficos">
       <canvas id="barra2"></canvas>
     </div>
 
   </div>
   <div id="dadosUsuarioDireita">
-    <h1 id="nome2">, Você possui:</h1>
+    <h1 id="nome2"></h1>
+    <hr>
     <h1 id="tempo"></h1>
     <div class="imagemTempo">
       <img id="imagemUsuario" src="" alt="">
@@ -268,8 +270,10 @@
 </div>
 
 <div class="apitos titulos" id="telaApitos" style="display: none;">
-  <h1 style="color: white; text-align: center;">Apitos Brancos são criados a partir de artefatos de segunda classe conhecidos como Pedras da
+  <h1 style="color: white; text-align: center;">Apitos Brancos são criados a partir de artefatos de segunda classe
+    conhecidos como Pedras da
     Vida Reverberante. A matéria-prima necessária para forjar essa pedra é, na verdade, uma pessoa humana</h1>
+  <hr>
   <div class="personagens">
 
     <div class="cartoesPersonagens flipcard">
@@ -369,58 +373,64 @@
     <div class="camadas">
       <div class="divBordas" id="camadasDescricao1">
         <h1 class="tituloCamada">1ª Camada: A Borda do Abismo (0 ~ 1.350 metros)</h1>
-<br>
+        <br>
         <span class="Efeitos">Efeitos: Tontura leve e náusea.</span><br><br>
-        <span class = "descricaoCamadas">Descrição: Fica logo abaixo de Orth. É a área
+        <span class="descricaoCamadas">Descrição: Fica logo abaixo de Orth. É a área
           mais segura, com fauna predominantemente inofensiva. Foi onde
           Riko encontrou Reg pela primeira vez.</span>
       </div>
-      <div class="divBordas" id="camadasDescricao2"><h1 class="tituloCamada">2ª Camada: A Floresta da Tentação (1.350 ~ 2.600 metros)</h1><br>
+      <div class="divBordas" id="camadasDescricao2">
+        <h1 class="tituloCamada">2ª Camada: A Floresta da Tentação (1.350 ~ 2.600 metros)</h1><br>
         <span class="Efeitos">Efeitos:
           Náusea intensa, dor de cabeça e
           dormência nos membros.</span><br><br>
-        <span class = "descricaoCamadas">Descrição: Uma selva densa e
+        <span class="descricaoCamadas">Descrição: Uma selva densa e
           úmida que abriga predadores muito mais agressivos, além do Acampamento dos Buscadores (onde vive a Apito
           Branco Ozen).</span>
       </div>
-      <div class="divBordas" id="camadasDescricao3"> <h1 class="tituloCamada">3ª Camada: A Grande Falha (2.600 ~ 7.000 metros)</h1><br><span
-          class="Efeitos">Efeitos: Vertigem,
+      <div class="divBordas" id="camadasDescricao3">
+        <h1 class="tituloCamada">3ª Camada: A Grande Falha (2.600 ~ 7.000 metros)</h1><br><span class="Efeitos">Efeitos:
+          Vertigem,
           alucinações visuais e
           auditivas.</span><br><br>
-        <br><span class = "descricaoCamadas">Descrição: Um penhasco vertical gigante que
+        <br><span class="descricaoCamadas">Descrição: Um penhasco vertical gigante que
           exige habilidades avançadas de escalada. É repleto de criaturas voadoras.</span>
       </div>
-      <div class="divBordas" id="camadasDescricao4"><h1 class="tituloCamada">4ª Camada: Os Cálices dos Gigantes (7.000 ~ 12.000 metros)</h1><br>
+      <div class="divBordas" id="camadasDescricao4">
+        <h1 class="tituloCamada">4ª Camada: Os Cálices dos Gigantes (7.000 ~ 12.000 metros)</h1><br>
         <span class="Efeitos">Efeitos:
           Dores intensas no corpo inteiro,
           sangramento por todos os orifícios.</span><br>
-        <br><span class = "descricaoCamadas">Descrição: Uma floresta formada por
+        <br><span class="descricaoCamadas">Descrição: Uma floresta formada por
           estruturas gigantes que acumulam água. É onde fica o lar de Nanachi.</span>
       </div>
-      <div class="divBordas" id="camadasDescricao5"><h1 class="tituloCamada">5ª Camada: O Mar de Cadáveres (12.000 ~ 13.000
-        metros)</h1><br><span class="Efeitos">Efeitos:
+      <div class="divBordas" id="camadasDescricao5">
+        <h1 class="tituloCamada">5ª Camada: O Mar de Cadáveres (12.000 ~ 13.000
+          metros)</h1><br><span class="Efeitos">Efeitos:
           Perda
           dos sentidos, confusão mental
           total e perda da noção do próprio corpo.</span><br>
-        <br><span class = "descricaoCamadas">Descrição:Uma grande extensão de água
+        <br><span class="descricaoCamadas">Descrição:Uma grande extensão de água
           congelada onde fica localizado o laboratório Ido Front, a base de operações do Apito Branco Bondrewd.
         </span>
       </div>
-      <div class="divBordas" id="camadasDescricao6"><h1 class="tituloCamada">6ª Camada: A Cidade Dourada/Capital dos Não-Retornados
-        (13.000+
-        metros)</h1><br> <span class="Efeitos">Efeitos: Perda da humanidade
+      <div class="divBordas" id="camadasDescricao6">
+        <h1 class="tituloCamada">6ª Camada: A Cidade Dourada/Capital dos Não-Retornados
+          (13.000+
+          metros)</h1><br> <span class="Efeitos">Efeitos: Perda da humanidade
           (transformação em Narehate), morte, ou raramente a perda de consciência.</span><br>
-        <br><span class = "descricaoCamadas">Descrição:A entrada para esta camada sela o destino
+        <br><span class="descricaoCamadas">Descrição:A entrada para esta camada sela o destino
           dos exploradores, já que subir de volta custa a humanidade ou a própria vida. É lá que se encontra a Vila de
           Iruburu, um refúgio habitado por criaturas modificadas (os Narehate)</span>
 
       </div>
-      <div class="divBordas" id="camadasDescricao7"><h1 class="tituloCamada">7ª Camada: O Vórtice Final (15.500+ metros)</h1><br>
+      <div class="divBordas" id="camadasDescricao7">
+        <h1 class="tituloCamada">7ª Camada: O Vórtice Final (15.500+ metros)</h1><br>
         <span class="Efeitos">Efeitos: Acredita-se ser
           morte
           instantânea ou algo pior, "a
           última fronteira".</span> <br><br>
-        <span class = "descricaoCamadas">Descrição: Pouco se sabe sobre este
+        <span class="descricaoCamadas">Descrição: Pouco se sabe sobre este
           local, cercado de mistério.</span>
       </div>
     </div>
@@ -715,6 +725,7 @@
   }
 
   let tempoStorage = sessionStorage.getItem("TEMPO_USUARIO")
+  let sexoUsuario = sessionStorage.getItem("SEXO_USUARIO")
   let tempo = document.getElementById("tempo")
   let imagemUsuario = document.getElementById("imagemUsuario")
   if (tempoStorage && tempo) { // 1000 ms = 1 segundo 
@@ -725,10 +736,16 @@
     tempo.innerHTML = `Tempo de conta <br> Dias:${dias}<br>Horas:${horas}<br>Minutos:${minutos}`
     if (dias < 30) {
       tempo.innerHTML += `<br>Você ainda é um bebê!`
-      imagemUsuario.src = "./assets/babyAdventurer.png"
+      if (sexoUsuario =="Masculino") {
+        imagemUsuario.src = "./assets/babyAdventurer.png"
+      } else if (sexoUsuario == "Feminino") {
+        imagemUsuario.src = "./assets/babyAdventurerF.jpg"
+      } else {
+        imagemUsuario.src = "./assets/babyAdventurer.jpg"
+      }
+    } else {
+      tempo.innerHTML = `Deu boqueta`
     }
-  } else {
-    tempo.innerHTML = `Deu boqueta`
   }
 
   let dataNovoFilme = new Date(2026, 9, 23, 0, 0, 0).getTime();
@@ -838,9 +855,30 @@
       data: {
         labels: maioresPontuadores,
         datasets: [{
-          label: "Maiores Pontuações",
+          label: "Pontuações",
           data: maioresMedias
         }]
+      }, options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: '#ffffff' // COR DO TEXTO DA LEGENDA
+            }
+          }
+        },
+
+        scales: {
+          x: {
+            ticks: {
+              color: '#ffffff' // COR DO TEXTO DO EIXO X
+            },
+          },
+          y: {
+            ticks: {
+              color: '#ffffff' // COR DO TEXTO DO EIXO Y
+            },
+          }
+        }
       }
     });
   }
@@ -865,20 +903,20 @@
           label: 'Pontuacao', // Nome do conjunto de dados
           data: pontuacoes, // Dados dos votos
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+            'rgba(50, 50, 50, 0.2)', // Cor de fundo das barras
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)', // Cor da borda das barras
+            'rgba(50, 50, 50, 1)', // Cor da borda das barras
           ],
           borderWidth: 1 // Largura da borda das barras
         }, {
           label: 'Acertos', // Nome do conjunto de dados
           data: dados.acertos, // Dados dos votos
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+            'rgba(34, 197, 94, 0.2)', // Cor de fundo das barras
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)', // Cor da borda das barras
+            'rgba(34, 197, 94, 1)', // Cor da borda das barras
           ],
           borderWidth: 1 // Largura da borda das barras
         },
@@ -886,15 +924,37 @@
           label: 'Erros', // Nome do conjunto de dados
           data: dados.erros, // Dados dos votos
           backgroundColor: [
-            'rgba(255, 99, 132, 0.2)', // Cor de fundo das barras
+            'rgba(239, 68, 68, 0.2)', // Cor de fundo das barras
           ],
           borderColor: [
-            'rgba(255, 99, 132, 1)', // Cor da borda das barras
+            'rgba(239, 68, 68, 1)', // Cor da borda das barras
           ],
           borderWidth: 1 // Largura da borda das barras
         }
         ]
       },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              color: '#ffffff' // COR DO TEXTO DA LEGENDA
+            }
+          }
+        },
+
+        scales: {
+          x: {
+            ticks: {
+              color: '#ffffff' // COR DO TEXTO DO EIXO X
+            },
+          },
+          y: {
+            ticks: {
+              color: '#ffffff' // COR DO TEXTO DO EIXO Y
+            },
+          }
+        }
+      }
     });
   }
 </script>
