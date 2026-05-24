@@ -7,9 +7,12 @@ var quizController = require("../controllers/quizController");
 router.post("/cadastrar", function (req, res) {
     quizController.cadastrar(req, res);
 })
+// router com parametros do sessionStorage
 router.get("/buscarQuizPorUsuario/:idUsuario", function (req, res) {
     quizController.buscarQuizPorUsuario(req, res);
 })
-
+router.get("/buscarEstatisticas", function (req, res) {
+    quizController.buscarEstatisticas(req, res);
+})
 
 module.exports = router;

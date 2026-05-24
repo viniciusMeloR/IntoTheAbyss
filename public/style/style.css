@@ -651,6 +651,7 @@ aside{
     flex: 1;
     margin-left: 5px;
     align-items: center;
+    text-align: center;
     justify-content: space-between;
     background-color: #e6edf5;
     border-radius: 12px;
@@ -796,4 +797,14 @@ button {
     font-size: 30px;
     font-weight: bolder;
     font-style: oblique;
+}
+
+.imagemTempo{
+    display: flex;
+    width: 400px;
+    height: 400px;
+}
+#imagemUsuario{
+    width: 100%;
+    height: 100%;
 }

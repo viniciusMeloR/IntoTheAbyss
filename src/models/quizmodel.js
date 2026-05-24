@@ -15,8 +15,15 @@ function buscarQuizPorUsuario(usuario) {
     var instrucaoSql = `SELECT * FROM quiz WHERE fkUsuarioAbyss = ${usuario};`
     return database.executar(instrucaoSql);
 }
+function buscarEstatisticas() {
+    var instrucaoSql = `SELECT usuarioAbyss.usuario AS usuario, AVG(pontuacao) AS media,
+     MAX(pontuacao) AS maximo, MIN(pontuacao) AS minimo FROM quiz JOIN usuarioAbyss ON fkUsuarioAbyss = idUsuario
+     GROUP BY usuarioAbyss.usuario ORDER BY media DESC LIMIT 5;`
+    return database.executar(instrucaoSql);
+}
 
 module.exports = {
     cadastrar,
-    buscarQuizPorUsuario
+    buscarQuizPorUsuario,
+    buscarEstatisticas
 };

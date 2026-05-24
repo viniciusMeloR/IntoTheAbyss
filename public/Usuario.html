@@ -241,12 +241,18 @@
     <div>
       <canvas id="barra"></canvas>
     </div>
+     <div>
+      <canvas id="barra2"></canvas>
+    </div>
 
   </div>
   <div id="dadosUsuarioDireita">
-    <h1 id="nome2"></h1>
-    <h1 id="tempo">Tempo de conta</h1>
-    <img id="quizImg" src="" alt="">
+    <h1 id="nome2">, Você possui:</h1>
+    <h1 id="tempo"></h1>
+    <div class="imagemTempo">
+      <img id="imagemUsuario" src="" alt="">
+    </div>
+    
   </div>
 </div>
 </div>
@@ -692,22 +698,28 @@
 
   let tempoStorage = sessionStorage.getItem("TEMPO_USUARIO")
   let tempo = document.getElementById("tempo")
-  if (tempo) {
+  let imagemUsuario = document.getElementById("imagemUsuario")
+  if (tempoStorage && tempo) { // 1000 ms = 1 segundo 
     let diferencaMiliSeg = Date.now() - new Date(tempoStorage) // Quando usa Date.now ele traz em milisegundos, então a operação de menos converte o tempo no storage em milisegundos
-    let dias = Math.floor(diferencaMiliSeg / (1000 * 60 * 60 * 24)) // Formula para trasformar mili segundos em dias, 1000 equivale a um segundo
+    let dias = Math.floor(diferencaMiliSeg / (1000 * 60 * 60 * 24)) // 1000 * 60 * 60 * 24 = 86400000 ms = 1 dia
     let horas = Math.floor((diferencaMiliSeg / (1000 * 60 * 60)) % 24)
-    let minutos = Math.floor((diferencaMiliSeg / (1000 * 60)) % 60)
-    tempo.innerHTML = `Tempo de criação da conta <br> Dias:${dias}<br>Horas:${horas}<br>Minutos:${minutos}`
+    let minutos = Math.floor((diferencaMiliSeg / (1000 * 60)) % 60) // % 60 pega só o resto depois da hora completa
+    tempo.innerHTML = `Tempo de conta <br> Dias:${dias}<br>Horas:${horas}<br>Minutos:${minutos}`
+  if(dias<30){
+    tempo.innerHTML +=`<br>Você ainda é um bebê!`
+    imagemUsuario.src = "./assets/babyAdventurer.png"
+  }
   } else {
     tempo.innerHTML = `Deu boqueta`
   }
+
 
   let divQuiz = document.getElementById("div_quiz")
   let sexoStorage = sessionStorage.getItem("SEXO_USUARIO")
   let dadosUsuario = document.getElementById("dadosUsuario")
 
   function quiz() {
-    alert("QuizSalvo!Você só podera tentar fazer o Quiz novamente ao fazer Login")
+    alert("QuizSalvo! Você só poderá tentar realizar o quiz novamente ao fazer Login")
     divQuiz.style.display = "none"
     dadosUsuario.style.display = "flex"
     let idUsuarioArmazem = sessionStorage.ID_USUARIO
@@ -728,12 +740,12 @@
         console.log("resposta: ", resposta);
       })
     return false;
-    
-  }
 
+  }
+// Achei estranho nao deixar explicito o metodo GET, mas se não for explicito nada ele usa GET como padrão
   function obterDados() {
     let idUsuario = sessionStorage.ID_USUARIO;
-    fetch(`/quiz/buscarQuizPorUsuario/${idUsuario}`)
+    fetch(`/quiz/buscarQuizPorUsuario/${idUsuario}`)// fetch com dados do session storage
       .then(function (response) {
         return response.json();
       })
@@ -744,9 +756,46 @@
       .catch(function (err) {
         console.log(err)
       })
+
+    fetch(`/quiz/buscarEstatisticas`)
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        console.log("DADOS DO BACKEND:", data);
+        mostrarEstatisticas(data)
+      })
+      .catch(function (err) {
+        console.log(err)
+      })
   }
   let myChart = null;
-  function plotarGraficoBarra(dados) {
+   let myChart2 = null;
+
+  function mostrarEstatisticas(dados) { 
+    //Não usei for pois aqui está recebendo um json do back end(dados que não precisa estar em uma array)
+      var ctx2 = document.getElementById("barra2").getContext('2d');
+    let maioresPontuadores= []
+    let maioresMedias = []
+    for(let i =0; i<dados.length;i++){
+      maioresPontuadores.push(dados[i].usuario)
+      maioresMedias.push(dados[i].media)
+    }
+    if (myChart2) {
+      myChart2.destroy();
+    }
+    var myChart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: maioresPontuadores,
+        datasets: [{
+          label: "Maiores Pontuações",
+          data:maioresMedias           
+        }]
+      }
+    });
+  }
+  function plotarGraficoBarra(dados) { // Aqui tem o for para salvar os dados recebidos em array de json
 
     let labels = []
     let pontuacoes = []

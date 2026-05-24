@@ -35,19 +35,19 @@ function cadastrar(req, res) {
     }
 }
 
-async function buscarQuizPorUsuario(req,res){
+async function buscarQuizPorUsuario(req,res){ // criei uma função com async e await para exercitar e entender a diferença do then
     try{
     let idUsuario = req.params.idUsuario;
     let dadosQuizUsuario = await quizmodel.buscarQuizPorUsuario(idUsuario);
     let pontuacao = []
     let acertos = []
-    let erros = []
+    let erros = []// aqui todos os dados estão sendo tratados no controller, sendo colocados dentro de arrays, lembrando que o model trouxe uma array de jsons e aqui estou colocando tudo dentro de arrays separadas
     for(let i=0;i<dadosQuizUsuario.length;i++){
         pontuacao.push(dadosQuizUsuario[i].pontuacao);
         acertos.push(dadosQuizUsuario[i].acertos);
         erros.push(dadosQuizUsuario[i].erros);
     }
-    return res.status(200).json({
+    return res.json({
         pontuacao:pontuacao,
         acertos:acertos,
         erros:erros
@@ -57,7 +57,25 @@ async function buscarQuizPorUsuario(req,res){
         return res.status(500).json({ erro: "Erro ao buscar dados do MySQL" });
 }
 }
+
+function buscarEstatisticas(req, res) {
+    quizmodel.buscarEstatisticas()
+        .then(function (dadosEstatistica) {
+            res.json(dadosEstatistica);
+
+        })
+        .catch(function (erro) {
+
+            console.log(erro);
+
+            res.status(500).json({
+                erro: "Erro ao buscar estatísticas"
+            });
+
+        });
+}
 module.exports = {
     cadastrar,
-    buscarQuizPorUsuario
+    buscarQuizPorUsuario,
+    buscarEstatisticas
 }
