@@ -135,14 +135,14 @@
 }
 
 .imagemM1{
-    background-image: url(../assets/apitos.png);
+    background-image: url(../assets/Riko\ y\ Reg.jpg);
     background-size: cover;
     height: 100%;
     width: 100%;
     border-radius: 5px;
 }
 .imagemM2{
-    background-image: url(../assets/camadas.jpg);
+    background-image: url(../assets/Akihito-Tsukushi-01.webp);
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -150,7 +150,7 @@
     
 }
 .imagemM3{
-    background-image: url(../assets/monstros.png);
+    background-image: url(../assets/download.jpg);
     background-size: cover;
      height: 100%;
     width: 100%;
@@ -283,7 +283,7 @@ aside{
 }
 .tela{
     display: flex;
-    min-height: 100vh;
+    height: fit-content;
     
 }
 .conteudoUsuario{
@@ -392,6 +392,15 @@ aside{
     background-size: cover;
 }
 
+.imgPersonagens{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+
 .cartoesPersonagens{
     perspective: 1000px;
     height: 300px;
@@ -404,15 +413,6 @@ aside{
     padding: 10px;
     
 }
-.imgPersonagens{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-
-
 .flipcard:hover .flipcardinner{
     transform: rotateY(180deg);
 }
